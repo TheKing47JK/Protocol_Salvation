@@ -13,7 +13,6 @@ config_version=5
 config/name="Protocol Salvation"
 run/main_scene="uid://cqgvw6o8iwhfy"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://bd8iye5vxha0g"
 
 [display]
 
