@@ -1,7 +1,18 @@
 extends Area2D
 
+@onready var animatedsprite :=  $AnimatedSprite2D
+
 @export var speed:float = 100
 var velocity := Vector2(0,0)
+
+func _process(delta):
+	#animeted
+	if velocity.x < 0:
+		animatedsprite.play("left")
+	elif velocity.x > 0:
+		animatedsprite.play("right")
+	else:
+		animatedsprite.play("straight")
 
 func _physics_process(delta):
 	var dirVec := Vector2(0,0)
