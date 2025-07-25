@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://balbsvsrb5duq"]
+
+[ext_resource type="Texture2D" uid="uid://7upaqith61si" path="res://sprites/Shoot`em Up/Background_Space-0001.png" id="1_1gpgy"]
+[ext_resource type="Script" uid="uid://bet2hsikayw5x" path="res://scripts/background.gd" id="1_7d2ct"]
+[ext_resource type="Texture2D" uid="uid://b42j4hdhih025" path="res://sprites/Shoot`em Up/Background_Nebula-0001.png" id="2_7d2ct"]
+[ext_resource type="Texture2D" uid="uid://bjt2do6rqxy3t" path="res://sprites/Shoot`em Up/Background_Nebula-0002.png" id="3_is73g"]
+[ext_resource type="Texture2D" uid="uid://c51byuv1xvim1" path="res://sprites/Shoot`em Up/Background_SmallStars-0001.png" id="4_6unfh"]
+[ext_resource type="Texture2D" uid="uid://dbt8u246tn4xm" path="res://sprites/Shoot`em Up/Background_Stars-0001.png" id="5_dp8vk"]
+
+[node name="SpaceBackground" type="ParallaxBackground"]
+script = ExtResource("1_7d2ct")
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 1024)
+
+[node name="Space" type="TextureRect" parent="SpaceLayer"]
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("1_1gpgy")
+
+[node name="Nebula001Layer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 1024)
+
+[node name="TextureRect" type="TextureRect" parent="Nebula001Layer"]
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("2_7d2ct")
+stretch_mode = 5
+
+[node name="Nebula002Layer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 1024)
+
+[node name="TextureRect" type="TextureRect" parent="Nebula002Layer"]
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("3_is73g")
+stretch_mode = 4
+
+[node name="SmallStarsLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 1024)
+
+[node name="TextureRect" type="TextureRect" parent="SmallStarsLayer"]
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("4_6unfh")
+stretch_mode = 1
+
+[node name="StarsLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 1024)
+
+[node name="TextureRect" type="TextureRect" parent="StarsLayer"]
+offset_right = 768.0
+offset_bottom = 1024.0
+texture = ExtResource("5_dp8vk")

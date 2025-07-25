@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://kvd3humfuu3u"]
+
+[ext_resource type="PackedScene" uid="uid://cbtsntt8eht7n" path="res://scene/enemy_template.tscn" id="1_kr41a"]
+[ext_resource type="Script" uid="uid://buwav8c2iy52p" path="res://scripts/enemy_3.gd" id="2_cqmbq"]
+[ext_resource type="Texture2D" uid="uid://wcmmtba2ka7a" path="res://sprites/Pixel SHMUP Free/large_enemy.png" id="2_w54lo"]
+[ext_resource type="PackedScene" uid="uid://b7l4eh3yeigys" path="res://scene/mini_bot.tscn" id="3_cqmbq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqmbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w54lo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lp7oq"]
+radius = 48.0
+
+[node name="MiniBoss" instance=ExtResource("1_kr41a")]
+script = ExtResource("2_cqmbq")
+mini_bot_scene = ExtResource("3_cqmbq")
+mini_bot_count = 3
+speed = 60.0
+shoot_interval = 0.8
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_cqmbq")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_lp7oq")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -64)
+
+[node name="MuzzleEnemy" type="Marker2D" parent="." index="3"]
+position = Vector2(0, 48)
+scale = Vector2(0.9, 0.5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3iykuupaco8j"]
+
+[ext_resource type="Texture2D" uid="uid://bsco43mp141v8" path="res://sprites/Pixel SHMUP Free/enemy_1_1.png" id="1_8jmkd"]
+[ext_resource type="Script" uid="uid://duhm1hj1rk643" path="res://scripts/enemy.gd" id="1_aie0n"]
+[ext_resource type="Texture2D" uid="uid://bewlcxqj7l85m" path="res://sprites/Pixel SHMUP Free/enemy_1_2.png" id="2_aie0n"]
+[ext_resource type="Texture2D" uid="uid://dst1edlmcoxyk" path="res://sprites/Pixel SHMUP Free/enemy_1_3.png" id="3_4fgr3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jmkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8jmkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_aie0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4fgr3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aie0n"]
+radius = 32.0
+
+[node name="Enemy2" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_aie0n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.66667, 1.66667)
+sprite_frames = SubResource("SpriteFrames_8jmkd")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aie0n")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.26218e-29, -48)
+scale = Vector2(0.9, 0.5)
+
+[node name="MuzzleEnemy" type="Marker2D" parent="."]
+position = Vector2(0, 40)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

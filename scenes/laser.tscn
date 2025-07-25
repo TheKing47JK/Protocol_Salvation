@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dunmyj61ujxrp"]
+
+[ext_resource type="Script" uid="uid://db8hekjf1iy5j" path="res://scripts/laser.gd" id="1_6ance"]
+[ext_resource type="Texture2D" uid="uid://04sclxyn3ad4" path="res://sprites/Pixel SHMUP Free/projectile_1.png" id="1_8sewo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t64xh"]
+height = 64.0
+
+[node name="Laser" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_6ance")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(1.38889, 1.67647)
+texture = ExtResource("1_8sewo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CapsuleShape2D_t64xh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 12)
+scale = Vector2(1, 0.4)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
