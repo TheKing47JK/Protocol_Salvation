@@ -23,6 +23,11 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	velocity = direction * speed
+	
+	#make sure the player cannot go out of screen
+	var viewRect :=get_viewport_rect()
+	position.x = clamp(position.x,0,viewRect.size.x)
+	position.y = clamp(position.y,0,viewRect.size.y)
 	move_and_slide()
 	
 func shoot():

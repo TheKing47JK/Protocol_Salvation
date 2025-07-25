@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dk05c7nyye6kr"]
+[gd_scene load_steps=19 format=3 uid="uid://dk05c7nyye6kr"]
 
 [ext_resource type="Texture2D" uid="uid://ceq3i5bkrvuq0" path="res://sprites/Pixel SHMUP Free/main_ship-1.png" id="1_1kqtj"]
 [ext_resource type="Script" uid="uid://m3cxc4yvcxfn" path="res://scripts/ship.gd" id="1_4igh5"]
@@ -84,9 +84,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aek66"]
-size = Vector2(112, 112)
-
 [node name="Ship" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_4igh5")
@@ -103,9 +100,8 @@ actor = NodePath("..")
 margin = 60
 metadata/_custom_type_script = "uid://4gt3ew3120x4"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_aek66")
-
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(0, -72)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -60, 9, -46, 10, -29, 18, -18, 18, -13, 54, 18, 56, 29, 26, 23, 27, 39, -26, 39, -26, 22, -56, 30, -56, 19, -21, -11, -18, -18, -11, -28, -10, -46)
