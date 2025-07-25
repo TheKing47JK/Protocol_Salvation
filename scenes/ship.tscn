@@ -1,0 +1,111 @@
+[gd_scene load_steps=20 format=3 uid="uid://dk05c7nyye6kr"]
+
+[ext_resource type="Texture2D" uid="uid://ceq3i5bkrvuq0" path="res://sprites/Pixel SHMUP Free/main_ship-1.png" id="1_1kqtj"]
+[ext_resource type="Script" uid="uid://m3cxc4yvcxfn" path="res://scripts/ship.gd" id="1_4igh5"]
+[ext_resource type="Texture2D" uid="uid://4f65pb3g8pgo" path="res://sprites/Pixel SHMUP Free/main_ship-2.png" id="2_pht6l"]
+[ext_resource type="Texture2D" uid="uid://c260xocn8cjw8" path="res://sprites/Pixel SHMUP Free/main_ship-3.png" id="3_aek66"]
+[ext_resource type="Texture2D" uid="uid://kgycrs27sxow" path="res://sprites/Pixel SHMUP Free/main_ship-10.png" id="4_qwfdf"]
+[ext_resource type="Texture2D" uid="uid://d8ek1cfr2qxp" path="res://sprites/Pixel SHMUP Free/main_ship-11.png" id="5_rkhs1"]
+[ext_resource type="Texture2D" uid="uid://dn68asvrcc55f" path="res://sprites/Pixel SHMUP Free/main_ship-12.png" id="6_4igh5"]
+[ext_resource type="Texture2D" uid="uid://xgomboqc0iyx" path="res://sprites/Pixel SHMUP Free/main_ship-13.png" id="7_3vna6"]
+[ext_resource type="Texture2D" uid="uid://dtfc3ga4kcbmg" path="res://sprites/Pixel SHMUP Free/main_ship-14.png" id="8_l547j"]
+[ext_resource type="Texture2D" uid="uid://bienmd6oash5n" path="res://sprites/Pixel SHMUP Free/main_ship-15.png" id="9_8on10"]
+[ext_resource type="Texture2D" uid="uid://hkm6vdnppyh1" path="res://sprites/Pixel SHMUP Free/main_ship-4.png" id="10_y6y7a"]
+[ext_resource type="Texture2D" uid="uid://cxrd801wskyev" path="res://sprites/Pixel SHMUP Free/main_ship-5.png" id="11_vdio1"]
+[ext_resource type="Texture2D" uid="uid://djrc4b41g0203" path="res://sprites/Pixel SHMUP Free/main_ship-6.png" id="12_2dx6b"]
+[ext_resource type="Texture2D" uid="uid://bnvgi7a6nqy6l" path="res://sprites/Pixel SHMUP Free/main_ship-7.png" id="13_pguga"]
+[ext_resource type="Texture2D" uid="uid://oh37tfbku2j5" path="res://sprites/Pixel SHMUP Free/main_ship-8.png" id="14_fscn7"]
+[ext_resource type="Texture2D" uid="uid://brwil16i78vkq" path="res://sprites/Pixel SHMUP Free/main_ship-9.png" id="15_7fbk6"]
+[ext_resource type="Script" uid="uid://4gt3ew3120x4" path="res://scripts/positionclamp.gd" id="19_rkhs1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8iqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1kqtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pht6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aek66")
+}],
+"loop": true,
+"name": &"center",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qwfdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rkhs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4igh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3vna6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l547j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8on10")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_y6y7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vdio1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2dx6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pguga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fscn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7fbk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qwfdf")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aek66"]
+size = Vector2(112, 112)
+
+[node name="Ship" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_4igh5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.66667, 2.2931)
+sprite_frames = SubResource("SpriteFrames_l8iqr")
+animation = &"center"
+autoplay = "center"
+
+[node name="PositionClamp" type="Node" parent="." node_paths=PackedStringArray("actor") groups=["player"]]
+script = ExtResource("19_rkhs1")
+actor = NodePath("..")
+margin = 60
+metadata/_custom_type_script = "uid://4gt3ew3120x4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_aek66")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -72)

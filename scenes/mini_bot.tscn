@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7l4eh3yeigys"]
+
+[ext_resource type="PackedScene" uid="uid://cbtsntt8eht7n" path="res://scene/enemy_template.tscn" id="1_lyoa2"]
+[ext_resource type="Texture2D" uid="uid://d1puxpnpclqvb" path="res://sprites/PixelSpaceRage/128px/Enemy02_Teal_Frame_1_png_processed.png" id="2_44cy3"]
+[ext_resource type="Texture2D" uid="uid://baj5dd1aaab3h" path="res://sprites/PixelSpaceRage/128px/Enemy02_Teal_Frame_2_png_processed.png" id="3_e4dj7"]
+[ext_resource type="Texture2D" uid="uid://di8a3uka6wxr5" path="res://sprites/PixelSpaceRage/128px/Enemy02_Teal_Frame_3_png_processed.png" id="4_c2krl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fejt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_44cy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e4dj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c2krl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5n18a"]
+radius = 16.0
+
+[node name="MiniBot" instance=ExtResource("1_lyoa2")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.5625, 0.5625)
+sprite_frames = SubResource("SpriteFrames_2fejt")
+autoplay = "default"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_5n18a")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -32)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
