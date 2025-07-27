@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0ggwwg70gfvb"]
+
+[ext_resource type="Texture2D" uid="uid://b155mcvp8dn7b" path="res://sprites/enemy_kamikaze.png" id="1_kubcq"]
+[ext_resource type="Script" uid="uid://eswcpheo6meu" path="res://enemy/script/kamikaze.gd" id="1_kxxpc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kubcq"]
+size = Vector2(20, 25)
+
+[node name="kamikaze" type="Area2D" groups=["damageable"]]
+script = ExtResource("1_kxxpc")
+verticalSpeed = 1000.0
+health = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kubcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_kubcq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
