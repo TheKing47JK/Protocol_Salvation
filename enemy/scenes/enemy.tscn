@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://di0tq7fi66v3x"]
+
+[ext_resource type="Script" uid="uid://gdr5lb1ix7j4" path="res://enemy/script/enemy.gd" id="1_qtrb2"]
+[ext_resource type="Texture2D" uid="uid://bpr17o4t5e016" path="res://sprites/enemy_clever.png" id="2_kx3vi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(16, 16)
+
+[node name="enemy" type="Area2D" groups=["damageable"]]
+script = ExtResource("1_qtrb2")
+verticalSpeed = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kx3vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
