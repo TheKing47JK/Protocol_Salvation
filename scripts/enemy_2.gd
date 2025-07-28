@@ -1,30 +1,15 @@
 extends Area2D
-class_name MiniBot
+class_name KamikazeBot
 
 @export var speed: float = 200
-@export var shoot_interval: float = 3
 @export var health: int = 5
-@onready var muzzle_enemy := $MuzzleEnemy if has_node("MuzzleEnemy") else null
 
 var laser_enemy_scene = preload("res://scenes/laser_enemy.tscn")
 signal laser_enemy_shoot(laser_enemy_scene, location)
 var shoot_timer := 0.0
 
-func _ready():
-	if has_node("MuzzleEnemy"):
-		muzzle_enemy = $MuzzleEnemy
-
 func _physics_process(delta: float) -> void:
 	global_position.y += speed * delta
-	
-	shoot_timer -= delta
-	if shoot_timer <= 0:
-		shoot_enemy()
-		shoot_timer = shoot_interval
-
-func shoot_enemy():
-	if muzzle_enemy:
-		laser_enemy_shoot.emit(laser_enemy_scene, muzzle_enemy.global_position)
 
 func die():
 	queue_free()

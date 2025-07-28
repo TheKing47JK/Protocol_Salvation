@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3iykuupaco8j"]
 
 [ext_resource type="Texture2D" uid="uid://bsco43mp141v8" path="res://sprites/Pixel SHMUP Free/enemy_1_1.png" id="1_8jmkd"]
-[ext_resource type="Script" uid="uid://duhm1hj1rk643" path="res://scripts/enemy.gd" id="1_aie0n"]
+[ext_resource type="Script" uid="uid://r0wfj6xw0f2t" path="res://scripts/enemy_2.gd" id="1_a4ywr"]
 [ext_resource type="Texture2D" uid="uid://bewlcxqj7l85m" path="res://sprites/Pixel SHMUP Free/enemy_1_2.png" id="2_aie0n"]
 [ext_resource type="Texture2D" uid="uid://dst1edlmcoxyk" path="res://sprites/Pixel SHMUP Free/enemy_1_3.png" id="3_4fgr3"]
 
@@ -23,27 +23,28 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aie0n"]
-radius = 32.0
+radius = 44.1022
 
-[node name="Enemy2" type="Area2D" groups=["damageable"]]
+[node name="Kamikaze Bot" type="Area2D" groups=["damageable"]]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_aie0n")
+script = ExtResource("1_a4ywr")
+speed = 600.0
+health = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.66667, 1.66667)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["damageable"]]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(2.125, 2.16667)
 sprite_frames = SubResource("SpriteFrames_8jmkd")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["damageable"]]
+position = Vector2(-1, 3)
 shape = SubResource("CircleShape2D_aie0n")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-1.26218e-29, -48)
 scale = Vector2(0.9, 0.5)
-
-[node name="MuzzleEnemy" type="Marker2D" parent="."]
-position = Vector2(0, 40)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

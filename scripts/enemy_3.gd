@@ -5,6 +5,7 @@ class_name EnemySplitter
 @export var mini_bot_scene: PackedScene
 @export var mini_bot_count: int = 3
 
+
 func _ready():
 	super._ready()
 	if has_node("MuzzleEnemy"):
@@ -18,10 +19,16 @@ func die():
 	call_deferred("_spawn_mini_bots_and_free")
 
 func _spawn_mini_bots_and_free():
+	var spacing = 96  # adjust spacing between bots
+	var start_x = global_position.x - spacing  # center the line on the current position
+	
 	for i in range(mini_bot_count):
 		var bot = mini_bot_scene.instantiate()
-		bot.global_position = global_position + Vector2(randf_range(-20, 20), randf_range(-20, 20))
+		var offset_x = start_x + i * spacing
+		var spawn_position = Vector2(offset_x, global_position.y)
+		bot.global_position = spawn_position
 		get_parent().add_child(bot)
+	
 	queue_free()
 
 func _on_body_entered(body):

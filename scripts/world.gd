@@ -55,9 +55,9 @@ func _on_enemy_spawn_timer_timeout() -> void:
 
 	var available_enemies = []
 
-	if time_passed < 30:
+	if time_passed < 3:
 		available_enemies = easy_enemies
-	elif time_passed < 60:
+	elif time_passed < 6:
 		available_enemies = easy_enemies + medium_enemies
 	else:
 		available_enemies = easy_enemies + medium_enemies + hard_enemies

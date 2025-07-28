@@ -2,7 +2,7 @@ class_name ShipPlayer
 extends CharacterBody2D
 
 signal laser_shoot(laser_scene, location)
-signal life_changed
+signal armor_changed
 
 @export var armor: int = 4
 @export var speed = 500
@@ -49,7 +49,7 @@ func animate_the_ship() -> void:
 
 func take_damage(amount: int) -> void:
 	armor -= amount
-	life_changed.emit(armor)
+	armor_changed.emit(armor)
 	if armor <= 0:
 		die()
 

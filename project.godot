@@ -19,7 +19,6 @@ config/icon="uid://bd8iye5vxha0g"
 
 window/size/viewport_width=768
 window/size/viewport_height=1024
-window/size/resizable=false
 window/size/window_width_override=360
 window/size/window_height_override=640
 window/stretch/mode="viewport"

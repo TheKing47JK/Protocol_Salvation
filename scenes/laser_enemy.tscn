@@ -4,23 +4,24 @@
 [ext_resource type="Script" uid="uid://bot63eg5jiwvp" path="res://scripts/laser_enemy.gd" id="2_qk7oy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2lwi1"]
-radius = 8.0
-height = 48.0
+radius = 14.0
+height = 100.0
 
 [node name="LaserEnemy" type="Area2D"]
 script = ExtResource("2_qk7oy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8.52651e-14, -22.625)
-scale = Vector2(1.38889, 1.87963)
+position = Vector2(0, -58)
+rotation = 3.14159
+scale = Vector2(3, 4.06)
 texture = ExtResource("2_hjyht")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(1, -51)
 shape = SubResource("CapsuleShape2D_2lwi1")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 13)
+position = Vector2(0, -122)
 scale = Vector2(0.9, 0.5)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

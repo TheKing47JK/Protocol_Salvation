@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://04sclxyn3ad4" path="res://sprites/Pixel SHMUP Free/projectile_1.png" id="1_8sewo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t64xh"]
-height = 64.0
+radius = 15.0
+height = 112.0
 
 [node name="Laser" type="Area2D"]
 collision_layer = 4
@@ -12,12 +13,12 @@ collision_mask = 2
 script = ExtResource("1_6ance")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(1.38889, 1.67647)
+position = Vector2(5.96046e-08, -62)
+scale = Vector2(3, 3.62)
 texture = ExtResource("1_8sewo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -70)
 shape = SubResource("CapsuleShape2D_t64xh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
