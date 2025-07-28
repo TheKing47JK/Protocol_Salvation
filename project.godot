@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Protocol Salvation"
-run/main_scene="uid://clp7yaft1xlcf"
+run/main_scene="uid://bvvbfmbavqy36"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://bd8iye5vxha0g"
 
