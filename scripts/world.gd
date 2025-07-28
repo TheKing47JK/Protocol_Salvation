@@ -62,7 +62,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	else:
 		available_enemies = easy_enemies + medium_enemies + hard_enemies
 
-	var enemy_scene = get_weighted_enemy_scene()
+	var enemy_scene = available_enemies.pick_random()
 	var enemy = enemy_scene.instantiate()
 
 	if enemy.has_signal("laser_enemy_shoot"):

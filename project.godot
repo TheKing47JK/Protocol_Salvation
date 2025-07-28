@@ -24,6 +24,10 @@ window/size/window_width_override=360
 window/size/window_height_override=640
 window/stretch/mode="viewport"
 
+[global_group]
+
+damageable=""
+
 [input]
 
 move_up={

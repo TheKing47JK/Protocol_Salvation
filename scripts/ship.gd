@@ -34,8 +34,7 @@ func _physics_process(_delta: float) -> void:
 	position.x = clamp(position.x, 0, viewRect.size.x)
 	position.y = clamp(position.y, 0, viewRect.size.y)
 	move_and_slide()
-
-
+	
 func shoot():
 	laser_shoot.emit(laser_scene, muzzle.global_position)
 
@@ -48,13 +47,11 @@ func animate_the_ship() -> void:
 	else:
 		animated_sprite_2d.play("center")
 
-
 func take_damage(amount: int) -> void:
 	armor -= amount
 	life_changed.emit(armor)
 	if armor <= 0:
 		die()
-
 
 func die():
 	queue_free()

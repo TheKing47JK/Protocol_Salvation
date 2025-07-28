@@ -3,7 +3,7 @@ class_name Enemy
 
 @export var speed: float = 200
 @export var shoot_interval: float = 3
-
+@export var health: int = 5
 @onready var muzzle_enemy := $MuzzleEnemy if has_node("MuzzleEnemy") else null
 
 var laser_enemy_scene = preload("res://scenes/laser_enemy.tscn")
@@ -28,10 +28,15 @@ func shoot_enemy():
 
 func die():
 	queue_free()
+	
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health  <= 0:
+		die()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:
-		body.die()
+		body.take_damage(1)
 		die()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
