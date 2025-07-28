@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cssu32ybsk7qm"]
+
+[ext_resource type="Script" uid="uid://blvh51u0dckrp" path="res://HUD/hud.gd" id="1_mi5n8"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mi5n8")
+
+[node name="armor_container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(9, 9)
+theme_override_constants/separation = -2

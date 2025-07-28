@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ob1tjq61bm7"]
+
+[ext_resource type="Texture2D" uid="uid://bpl7a50l0mo2f" path="res://sprites/Mini Pixel Pack 3/UI objects/Player_life_icon (16 x 16).png" id="1_itm42"]
+
+[node name="armor_icon" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_itm42")
