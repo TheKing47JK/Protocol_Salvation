@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://kvd3humfuu3u"]
 
-[ext_resource type="PackedScene" uid="uid://cbtsntt8eht7n" path="res://scene/enemy_template.tscn" id="1_kr41a"]
+[ext_resource type="PackedScene" uid="uid://cbtsntt8eht7n" path="res://scenes/enemy_template.tscn" id="1_kr41a"]
 [ext_resource type="Script" uid="uid://buwav8c2iy52p" path="res://scripts/enemy_3.gd" id="2_cqmbq"]
 [ext_resource type="Texture2D" uid="uid://wcmmtba2ka7a" path="res://sprites/Pixel SHMUP Free/large_enemy.png" id="2_w54lo"]
-[ext_resource type="PackedScene" uid="uid://b7l4eh3yeigys" path="res://scene/mini_bot.tscn" id="3_cqmbq"]
+[ext_resource type="PackedScene" uid="uid://b7l4eh3yeigys" path="res://scenes/mini_bot.tscn" id="3_cqmbq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cqmbq"]
 animations = [{
