@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvvbfmbavqy36"]
+[gd_scene load_steps=9 format=3 uid="uid://bvvbfmbavqy36"]
 
+[ext_resource type="Texture2D" uid="uid://ch4siehj56tn5" path="res://sprites/logo_sprite.png" id="1_2oo14"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="1_5aisn"]
 [ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="2_rw745"]
 [ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="3_01aic"]
@@ -9,6 +10,11 @@
 [ext_resource type="Script" uid="uid://djqt5hlu81qct" path="res://stage/btn_quit.gd" id="7_01aic"]
 
 [node name="main" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(387, 267)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_2oo14")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_5aisn")]
 
