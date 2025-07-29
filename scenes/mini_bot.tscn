@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b7l4eh3yeigys"]
 
-[ext_resource type="PackedScene" uid="uid://cbtsntt8eht7n" path="res://scene/enemy_template.tscn" id="1_lyoa2"]
+[ext_resource type="PackedScene" uid="uid://cbtsntt8eht7n" path="res://scenes/enemy_template.tscn" id="1_lyoa2"]
 [ext_resource type="Texture2D" uid="uid://d1puxpnpclqvb" path="res://sprites/PixelSpaceRage/128px/Enemy02_Teal_Frame_1_png_processed.png" id="2_44cy3"]
 [ext_resource type="Texture2D" uid="uid://baj5dd1aaab3h" path="res://sprites/PixelSpaceRage/128px/Enemy02_Teal_Frame_2_png_processed.png" id="3_e4dj7"]
 [ext_resource type="Texture2D" uid="uid://di8a3uka6wxr5" path="res://sprites/PixelSpaceRage/128px/Enemy02_Teal_Frame_3_png_processed.png" id="4_c2krl"]

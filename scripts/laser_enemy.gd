@@ -4,8 +4,9 @@ extends Area2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Update the vertical position of the object by increasing it based on the speed 
+	# (moving downwards because is for enemy)
 	global_position.y += speed * delta
-	pass
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

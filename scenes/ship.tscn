@@ -88,17 +88,17 @@ animations = [{
 collision_mask = 2
 script = ExtResource("1_4igh5")
 
+[node name="PositionClamp" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("19_rkhs1")
+actor = NodePath("..")
+margin = 50
+metadata/_custom_type_script = "uid://4gt3ew3120x4"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.66667, 2.2931)
 sprite_frames = SubResource("SpriteFrames_l8iqr")
 animation = &"center"
 autoplay = "center"
-
-[node name="PositionClamp" type="Node" parent="." node_paths=PackedStringArray("actor") groups=["player"]]
-script = ExtResource("19_rkhs1")
-actor = NodePath("..")
-margin = 60
-metadata/_custom_type_script = "uid://4gt3ew3120x4"
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(0, -72)
