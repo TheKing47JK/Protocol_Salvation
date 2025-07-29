@@ -13,7 +13,7 @@ config_version=5
 config/name="Protocol Salvation"
 run/main_scene="uid://bvvbfmbavqy36"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://bd8iye5vxha0g"
+config/icon="uid://b017xssy4sawo"
 
 [autoload]
 
@@ -23,8 +23,6 @@ Signals="*res://Autoloads/Signals.gd"
 
 window/size/viewport_width=768
 window/size/viewport_height=1024
-window/size/window_width_override=360
-window/size/window_height_override=640
 window/stretch/mode="viewport"
 
 [global_group]
