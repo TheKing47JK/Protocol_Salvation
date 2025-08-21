@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://drocexojg8nt4"]
+
+[ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_hjwfi"]
+[ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ut35m"]
+[ext_resource type="PackedScene" uid="uid://c3iykuupaco8j" path="res://scenes/enemy_2.tscn" id="3_vqm2r"]
+[ext_resource type="PackedScene" uid="uid://kvd3humfuu3u" path="res://scenes/enemy_3.tscn" id="4_0ndcg"]
+[ext_resource type="PackedScene" uid="uid://cssu32ybsk7qm" path="res://HUD/hud.tscn" id="5_ki5ds"]
+[ext_resource type="PackedScene" uid="uid://dk05c7nyye6kr" path="res://scenes/ship.tscn" id="6_ro40s"]
+[ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="7_occcp"]
+
+[node name="stage3" type="Node2D"]
+script = ExtResource("1_hjwfi")
+enemy_scenes = Array[PackedScene]([ExtResource("2_ut35m"), ExtResource("3_vqm2r"), ExtResource("4_0ndcg")])
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="PlayerSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(384, 910)
+
+[node name="LaserContainer" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_ki5ds")]
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 19.0
+offset_bottom = 20.0
+
+[node name="Ship" parent="." instance=ExtResource("6_ro40s")]
+z_index = 100
+position = Vector2(384, 912)
+
+[node name="SpaceBackground" parent="." instance=ExtResource("7_occcp")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 696.0
+offset_top = 12.0
+offset_right = 755.0
+offset_bottom = 42.0
+text = "Stage 3"
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

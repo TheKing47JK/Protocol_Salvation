@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3iykuupaco8j"]
+[gd_scene load_steps=8 format=3 uid="uid://c3iykuupaco8j"]
 
 [ext_resource type="Texture2D" uid="uid://bsco43mp141v8" path="res://sprites/Pixel SHMUP Free/enemy_1_1.png" id="1_8jmkd"]
 [ext_resource type="Script" uid="uid://r0wfj6xw0f2t" path="res://scripts/enemy_2.gd" id="1_a4ywr"]
 [ext_resource type="Texture2D" uid="uid://bewlcxqj7l85m" path="res://sprites/Pixel SHMUP Free/enemy_1_2.png" id="2_aie0n"]
 [ext_resource type="Texture2D" uid="uid://dst1edlmcoxyk" path="res://sprites/Pixel SHMUP Free/enemy_1_3.png" id="3_4fgr3"]
+[ext_resource type="AudioStream" uid="uid://d12r6gep5ie84" path="res://sounds/hit_enemy.wav" id="5_k4auq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8jmkd"]
 animations = [{
@@ -30,7 +31,6 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_a4ywr")
 speed = 600.0
-health = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["damageable"]]
 position = Vector2(9.53674e-07, 0)
@@ -45,6 +45,9 @@ shape = SubResource("CircleShape2D_aie0n")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-1.26218e-29, -48)
 scale = Vector2(0.9, 0.5)
+
+[node name="HitByPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_k4auq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
