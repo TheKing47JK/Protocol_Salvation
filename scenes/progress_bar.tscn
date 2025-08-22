@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1j2hj33m8rsg"]
+
+[ext_resource type="Script" uid="uid://dqgblvp5twk7u" path="res://scripts/progress_bar.gd" id="1_8un81"]
+[ext_resource type="Texture2D" uid="uid://ca36d3xggrnjg" path="res://sprites/Pixel SHMUP Free/UI/icon-ship.png" id="2_8un81"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8un81"]
+bg_color = Color(0.695023, 0.282767, 0.0211773, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar"]
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 358.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_8un81")
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_8un81")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, 346)
+scale = Vector2(2.28364, 2.00135)
+texture = ExtResource("2_8un81")

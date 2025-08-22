@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk6hwb8bthnut"]
+
+[ext_resource type="Script" uid="uid://dpgcqdkei0yoo" path="res://scripts/linespawner.gd" id="1_o7yvv"]
+[ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ccddt"]
+
+[node name="linespawner" type="Node2D"]
+script = ExtResource("1_o7yvv")
+enemy_scene = ExtResource("2_ccddt")
+
+[node name="linetimer" type="Timer" parent="."]

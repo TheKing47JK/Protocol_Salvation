@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy8i67tfbosg5"]
+
+[ext_resource type="Script" uid="uid://2bdiepo1wdvk" path="res://scripts/rowspawner.gd" id="1_tg5j0"]
+[ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ekxn0"]
+
+[node name="rowspawner" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_tg5j0")
+enemy_scene = ExtResource("2_ekxn0")
+
+[node name="rowtimer" type="Timer" parent="."]
