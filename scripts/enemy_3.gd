@@ -1,5 +1,4 @@
 extends "res://scripts/enemy.gd"
-
 class_name EnemySplitter
 
 @export var mini_bot_scene: PackedScene
@@ -33,7 +32,7 @@ func _spawn_mini_bots_and_free():
 
 func _on_body_entered(body):
 	if body is ShipPlayer:
-		body.die()
+		body.take_damage(1)
 		die()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
