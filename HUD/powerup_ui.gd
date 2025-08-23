@@ -8,7 +8,8 @@ var duration := 0.0
 var time_left := 0.0
 var base_color: Color = Color.WHITE
 
-var label_time_left := 0.0   # separate timer for label display
+const LABEL_DURATION := 1.5
+var label_time_left := 0.0
 
 func activate_powerup(name: String, duration_sec: float, color: Color) -> void:
 	# Initialize state
@@ -20,7 +21,8 @@ func activate_powerup(name: String, duration_sec: float, color: Color) -> void:
 	# Show label
 	powerup_label.text = name
 	powerup_label.visible = true
-	label_time_left = 1.5  # show label for 1.5 second
+	powerup_label.modulate.a = 1.0  # reset alpha
+	label_time_left = LABEL_DURATION
 
 	# Show glow and set color/intensity to full
 	corner_glow.visible = true
@@ -36,12 +38,15 @@ func _process(delta: float) -> void:
 	label_time_left -= delta
 	var t: float = clamp(time_left / duration, 0.0, 1.0)
 
-	# Fade intensity as time passes
+	# Fade glow intensity
 	var mat := corner_glow.material as ShaderMaterial
 	mat.set_shader_parameter("intensity", t)
 
-	# Hide label after 1.5 sec
-	if label_time_left <= 0.0:
+	# Smooth fade out of label
+	if label_time_left > 0.0:
+		var label_t :float = clamp(label_time_left / LABEL_DURATION, 0.0, 1.0)
+		powerup_label.modulate.a = label_t
+	else:
 		powerup_label.visible = false
 
 	# End powerup
