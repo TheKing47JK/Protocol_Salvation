@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://csadf3vp02rp0"]
+
+[ext_resource type="Script" uid="uid://duhm1hj1rk643" path="res://scripts/enemy.gd" id="1_a7q5a"]
+[ext_resource type="Texture2D" uid="uid://cbubsmdot12d3" path="res://sprites/Pixel SHMUP Free/enemy_2_1.png" id="1_jhall"]
+[ext_resource type="Texture2D" uid="uid://dk7sa4hxtp8ao" path="res://sprites/Pixel SHMUP Free/enemy_2_2.png" id="2_a7q5a"]
+[ext_resource type="Texture2D" uid="uid://c1lqrcgoe2ygo" path="res://sprites/Pixel SHMUP Free/enemy_2_3.png" id="3_dodob"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufwdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jhall")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a7q5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dodob")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dodob"]
+radius = 100.005
+
+[node name="Basic Drone" type="Area2D" groups=["damageable"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_a7q5a")
+speed = 100.0
+shoot_interval = null
+health = null
+horizontalSpeed = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(3.25521, 3.07292)
+sprite_frames = SubResource("SpriteFrames_ufwdq")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 13)
+shape = SubResource("CircleShape2D_dodob")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, -64)
+
+[node name="MuzzleEnemy" type="Marker2D" parent="."]
+position = Vector2(2, 64)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

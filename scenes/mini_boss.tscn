@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkffldat8d5i1"]
+
+[ext_resource type="Texture2D" uid="uid://cssu0kga2o0rh" path="res://sprites/miniboss-removebg-preview.png" id="1_lfgj6"]
+[ext_resource type="Script" uid="uid://ci1md1dlhfcod" path="res://mini_boss.gd" id="1_pso4q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pso4q"]
+radius = 296.027
+
+[node name="MiniBoss" type="Area2D" groups=["damageable"]]
+script = ExtResource("1_pso4q")
+metadata/_custom_type_script = "uid://ci1md1dlhfcod"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(384, 274)
+scale = Vector2(1.17561, 1.08796)
+texture = ExtResource("1_lfgj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(387, 228)
+shape = SubResource("CircleShape2D_pso4q")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(163, 412)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(262, 408)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(511, 414)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(609, 414)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(390, 303)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(109, 137)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(661, 136)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

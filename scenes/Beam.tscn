@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq170ofq37r1q"]
+
+[ext_resource type="Script" uid="uid://djr3qw5w6oj7a" path="res://scripts/beam.gd" id="1_hy2g8"]
+[ext_resource type="Texture2D" uid="uid://ddd3k0h05qm6j" path="res://sprites/beam3.png" id="2_oqmk3"]
+[ext_resource type="Texture2D" uid="uid://vld2wpabp5q6" path="res://sprites/beam4.png" id="3_4viho"]
+[ext_resource type="Texture2D" uid="uid://bftomtsd62bne" path="res://sprites/beam5.png" id="4_4t5pb"]
+[ext_resource type="Texture2D" uid="uid://csl4je2jirrhd" path="res://sprites/beam6.png" id="5_gr3cb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ay2m2"]
+radius = 135.0
+height = 862.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aeph6"]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("2_oqmk3")
+}, {
+"duration": 1.2,
+"texture": ExtResource("3_4viho")
+}, {
+"duration": 1.2,
+"texture": ExtResource("4_4t5pb")
+}, {
+"duration": 1.2,
+"texture": ExtResource("5_gr3cb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Beam" type="Area2D"]
+script = ExtResource("1_hy2g8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(131, 132)
+shape = SubResource("CapsuleShape2D_ay2m2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(125, 226.75)
+scale = Vector2(9.33333, 7.57246)
+sprite_frames = SubResource("SpriteFrames_aeph6")
+frame_progress = 0.797785

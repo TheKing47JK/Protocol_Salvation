@@ -1,18 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://clp7yaft1xlcf"]
+[gd_scene load_steps=11 format=3 uid="uid://clp7yaft1xlcf"]
 
 [ext_resource type="PackedScene" uid="uid://dk05c7nyye6kr" path="res://scenes/ship.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://kvd3humfuu3u" path="res://scenes/enemy_3.tscn" id="4_dwbse"]
+[ext_resource type="PackedScene" uid="uid://cy8i67tfbosg5" path="res://scenes/rowspawner.tscn" id="5_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://c3iykuupaco8j" path="res://scenes/enemy_2.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://cssu32ybsk7qm" path="res://HUD/hud.tscn" id="5_i7141"]
-[ext_resource type="PackedScene" uid="uid://dwdwajow77v6" path="res://scenes/spawner.tscn" id="8_7r4gi"]
-[ext_resource type="PackedScene" uid="uid://c1j2hj33m8rsg" path="res://scenes/progress_bar.tscn" id="9_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://co5yl3sppyh42" path="res://scenes/bouncing_enemy.tscn" id="5_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://c1j2hj33m8rsg" path="res://scenes/progress_bar.tscn" id="8_4mrxx"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_fj7yv")
-enemy_scenes = Array[PackedScene]([ExtResource("5_036b0"), ExtResource("5_dwbse"), ExtResource("4_dwbse")])
+enemy_scenes = Array[PackedScene]([ExtResource("5_036b0"), ExtResource("5_dwbse"), ExtResource("4_dwbse"), ExtResource("5_w7kh3")])
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
@@ -38,8 +39,10 @@ position = Vector2(384, 912)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_aqk2v")]
 
-[node name="Spawner" parent="." instance=ExtResource("8_7r4gi")]
+[node name="ProgressBar" parent="." instance=ExtResource("8_4mrxx")]
+offset_top = 295.0
+offset_bottom = 651.0
 
-[node name="ProgressBar" parent="." instance=ExtResource("9_w7kh3")]
+[node name="rowspawner" parent="." instance=ExtResource("5_7r4gi")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
