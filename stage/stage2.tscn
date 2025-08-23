@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bioivdowlyn54"]
+[gd_scene load_steps=9 format=3 uid="uid://bioivdowlyn54"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_ycadj"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ov8wl"]
 [ext_resource type="PackedScene" uid="uid://c3iykuupaco8j" path="res://scenes/enemy_2.tscn" id="3_mchxx"]
 [ext_resource type="PackedScene" uid="uid://kvd3humfuu3u" path="res://scenes/enemy_3.tscn" id="4_umyg1"]
 [ext_resource type="PackedScene" uid="uid://cssu32ybsk7qm" path="res://HUD/hud.tscn" id="5_lug6x"]
+[ext_resource type="PackedScene" uid="uid://bmljgoym5wm1v" path="res://HUD/powerupUI.tscn" id="5_lwygd"]
 [ext_resource type="PackedScene" uid="uid://dk05c7nyye6kr" path="res://scenes/ship.tscn" id="6_rdexs"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="7_234nn"]
 
@@ -23,6 +24,8 @@ position = Vector2(384, 910)
 [node name="LaserContainer" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PowerUpUI" parent="CanvasLayer" instance=ExtResource("5_lwygd")]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_lug6x")]
 offset_left = 19.0
