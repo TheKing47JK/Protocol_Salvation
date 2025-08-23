@@ -5,18 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://c3iykuupaco8j" path="res://scenes/enemy_2.tscn" id="3_bwayr"]
 [ext_resource type="PackedScene" uid="uid://kvd3humfuu3u" path="res://scenes/enemy_3.tscn" id="4_vf5ng"]
 [ext_resource type="PackedScene" uid="uid://bmljgoym5wm1v" path="res://HUD/powerupUI.tscn" id="5_an8mi"]
-[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="5_bwayr"]
+[ext_resource type="PackedScene" uid="uid://defdtk4kosw0j" path="res://scenes/spawner.tscn" id="5_bwayr"]
 [ext_resource type="PackedScene" uid="uid://cssu32ybsk7qm" path="res://HUD/hud.tscn" id="6_hrewq"]
 [ext_resource type="PackedScene" uid="uid://dk05c7nyye6kr" path="res://scenes/ship.tscn" id="7_h4obd"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="8_lwrpw"]
-[ext_resource type="PackedScene" path="res://HUD/progress_bar.tscn" id="8_vf5ng"]
+[ext_resource type="PackedScene" uid="uid://d31qplcv8ulqr" path="res://HUD/progress_bar.tscn" id="8_vf5ng"]
 
 [node name="stage1" type="Node2D"]
 script = ExtResource("1_3ikxw")
 enemy_scenes = Array[PackedScene]([ExtResource("2_e7fe8"), ExtResource("3_bwayr"), ExtResource("4_vf5ng")])
 
 [node name="Spawner" parent="." instance=ExtResource("5_bwayr")]
-position = Vector2(696, 12)
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
@@ -31,11 +30,15 @@ position = Vector2(384, 910)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PowerUpUI" parent="CanvasLayer" instance=ExtResource("5_an8mi")]
+offset_left = -5.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 3.0
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("6_hrewq")]
-offset_left = 2.0
+offset_left = -3.0
 offset_top = 1.0
-offset_right = 2.0
+offset_right = -3.0
 offset_bottom = 1.0
 
 [node name="ProgressBar" parent="CanvasLayer" instance=ExtResource("8_vf5ng")]
@@ -43,7 +46,6 @@ offset_left = 29.0
 offset_top = 249.0
 offset_right = 50.0
 offset_bottom = 605.0
-script = null
 
 [node name="Ship" parent="." instance=ExtResource("7_h4obd")]
 z_index = 100

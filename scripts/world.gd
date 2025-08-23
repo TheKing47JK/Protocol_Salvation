@@ -75,7 +75,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 		enemy.laser_enemy_shoot.connect(laser_enemy_shot)
 
 	enemy.global_position = Vector2(randf_range(50, 700), -50)
-	enemy_container.add_child(enemy)
+	#enemy_container.add_child(enemy)
 
 func update_weights():
 	var time_passed = (Time.get_ticks_msec() / 1000.0) - game_start_time
