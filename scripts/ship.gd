@@ -5,19 +5,38 @@ signal laser_shoot(laser_scene, location)
 signal died
 
 @export var armor: int = 4
-@export var speed = 500
-@export var rate_of_fire = 0.25
+
+
+@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+@onready var hit_sound: AudioStreamPlayer2D = $HitByEnemy
+
+var max_armor:int = 4
+
+@export var damageInvincibilityTime = 1
+
+@export var normalspeed = 500
+@export var boostedspeed = 1000
+var speed:int = normalspeed
+
+@export var normalrateOfFire = 0.2
+@export var rapidrateOfFire = 0.1
+var rateOfFire:float = normalrateOfFire
 
 @onready var muzzle: Marker2D = $Muzzle
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
-@onready var hit_sound: AudioStreamPlayer2D = $HitByEnemy
+@onready var invincibilityTimer = $"Invincibility Timer"
+@onready var rapidfireTimer = $"RapidFire Timer"
+@onready var boosterTimer = $"Booster Timer"
+@onready var shieldSprite = $Shield
+
 
 var shoot_cd := false
 var laser_scene = preload("res://scenes/laser.tscn")
 
 func _ready():
-	Signals.emit_signal("on_player_armor_changed", armor)
+
+	Signals.emit_signal("on_player_armor_changed",armor)
+	shieldSprite.visible = false
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") and not shoot_cd:
@@ -55,15 +74,19 @@ func animate_the_ship() -> void:
 	else:
 		animated_sprite_2d.play("center")
 
-func take_hit(damage: int) -> void:
-	# If a hit sound exists, play it
+func take_damage(amount: int) -> void:
+
+# If a hit sound exists, play it
 	if hit_sound:
 		if hit_sound.playing:
 			hit_sound.stop()
 		hit_sound.play()
 	take_damage(damage)
-
-func take_damage(amount: int) -> void:
+  
+	if !(invincibilityTimer.is_stopped()):
+		return
+		
+	applyShield(damageInvincibilityTime)
 	armor -= amount
 	Signals.emit_signal("on_player_armor_changed", armor)
 	if armor <= 0:
@@ -79,3 +102,31 @@ func die():
 	queue_free()
 	# Emit a custom signal to notify other scripts that this entity has died
 	died.emit()
+
+
+func applyShield(time:float):
+	invincibilityTimer.start(time + invincibilityTimer.time_left)
+	shieldSprite.visible = true
+	
+func applyRapidFire(time:float):
+	rateOfFire = rapidrateOfFire
+	rapidfireTimer.start(time + rapidfireTimer.time_left)
+	
+func applySpeedBoost(time:float):
+	speed = boostedspeed
+	boosterTimer.start(time + boosterTimer.time_left)
+	
+func add_armor(amount: int):
+	armor += amount
+	armor = clamp(armor, 0, max_armor)
+	Signals.emit_signal("on_player_armor_changed",armor)
+
+func _on_invincibility_timer_timeout() -> void:
+	shieldSprite.visible = false
+
+func _on_rapid_fire_timer_timeout() -> void:
+	rateOfFire = normalrateOfFire
+
+func _on_booster_timer_timeout() -> void:
+	speed = normalspeed
+

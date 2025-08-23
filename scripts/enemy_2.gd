@@ -1,5 +1,6 @@
-extends Area2D
+extends "res://scripts/enemy.gd"
 class_name KamikazeBot
+
 
 @export var speed: float = 200
 @export var max_health: int = 2
@@ -21,6 +22,7 @@ func _ready():
 	# Create and show health bar
 	_ensure_hp_bar()
 	_update_hp_bar()
+
 
 func _physics_process(delta: float) -> void:
 	global_position.y += speed * delta
@@ -46,7 +48,7 @@ func take_damage(amount: int) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:
-		body.take_hit(1)
+		body.take_damage(1)
 		die()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

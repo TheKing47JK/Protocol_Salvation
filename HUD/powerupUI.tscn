@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmljgoym5wm1v"]
+
+[ext_resource type="Script" uid="uid://bwp8k51key02g" path="res://HUD/powerup_ui.gd" id="1_eoqio"]
+[ext_resource type="Shader" uid="uid://i2i07uh7q8pk" path="res://HUD/powerupUI.gdshader" id="2_pcbbu"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="3_88dqf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lokua"]
+shader = ExtResource("2_pcbbu")
+shader_parameter/glow_color = Color(1, 0.2, 0.2, 1)
+shader_parameter/thickness = 0.025
+shader_parameter/softness = 0.012
+shader_parameter/intensity = 0.0
+shader_parameter/pulse_speed = 3.0
+
+[node name="PowerUpUI" type="Control" groups=["powerup_ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eoqio")
+
+[node name="CornerGlow" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lokua")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PowerupLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 201.0
+offset_right = 769.0
+offset_bottom = 333.0
+theme_type_variation = &"GraphFrameTitleLabel"
+theme_override_fonts/font = ExtResource("3_88dqf")
+theme_override_font_sizes/font_size = 150
+text = "testing"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true

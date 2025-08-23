@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=21 format=3 uid="uid://dk05c7nyye6kr"]
+
 
 [ext_resource type="Texture2D" uid="uid://ceq3i5bkrvuq0" path="res://sprites/Pixel SHMUP Free/main_ship-1.png" id="1_1kqtj"]
 [ext_resource type="Script" uid="uid://m3cxc4yvcxfn" path="res://scripts/ship.gd" id="1_4igh5"]
@@ -16,8 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://bnvgi7a6nqy6l" path="res://sprites/Pixel SHMUP Free/main_ship-7.png" id="13_pguga"]
 [ext_resource type="Texture2D" uid="uid://oh37tfbku2j5" path="res://sprites/Pixel SHMUP Free/main_ship-8.png" id="14_fscn7"]
 [ext_resource type="Texture2D" uid="uid://brwil16i78vkq" path="res://sprites/Pixel SHMUP Free/main_ship-9.png" id="15_7fbk6"]
+
 [ext_resource type="AudioStream" uid="uid://lgls55gmpehx" path="res://sounds/laser_ship.wav" id="18_dschd"]
 [ext_resource type="AudioStream" uid="uid://cmjdmmjqhwbo6" path="res://sounds/hit_ship.wav" id="19_83dbu"]
+
 [ext_resource type="Script" uid="uid://4gt3ew3120x4" path="res://scripts/positionclamp.gd" id="19_rkhs1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l8iqr"]
@@ -90,8 +94,10 @@ script = ExtResource("1_4igh5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.66667, 2.2931)
 sprite_frames = SubResource("SpriteFrames_l8iqr")
+
 animation = &"move_right"
 autoplay = "center"
+
 
 [node name="PositionClamp" type="Node" parent="." node_paths=PackedStringArray("actor") groups=["player"]]
 script = ExtResource("19_rkhs1")
@@ -105,8 +111,27 @@ position = Vector2(0, -72)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -60, 9, -46, 10, -29, 18, -18, 18, -13, 54, 18, 56, 29, 26, 23, 27, 39, -26, 39, -26, 22, -56, 30, -56, 19, -21, -11, -18, -18, -11, -28, -10, -46)
 
+
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_dschd")
 
 [node name="HitByEnemy" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_83dbu")
+
+[node name="Invincibility Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RapidFire Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Booster Timer" type="Timer" parent="."]
+
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(1, -4)
+scale = Vector2(1.0745, 1.45763)
+texture = ExtResource("18_dschd")
+
+[connection signal="timeout" from="Invincibility Timer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="timeout" from="RapidFire Timer" to="." method="_on_rapid_fire_timer_timeout"]
+[connection signal="timeout" from="Booster Timer" to="." method="_on_booster_timer_timeout"]
+
