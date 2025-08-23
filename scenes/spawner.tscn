@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://defdtk4kosw0j"]
+
+[ext_resource type="Script" uid="uid://ddxsbcws3n3do" path="res://scripts/spawner.gd" id="1_2vbf6"]
+[ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ik2nu"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_2vbf6")
+row_enemy_scene = ExtResource("2_ik2nu")
+line_enemy_scene = ExtResource("2_ik2nu")
+v_enemy_scene = ExtResource("2_ik2nu")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="LaserContainer" type="Node2D" parent="."]

@@ -48,7 +48,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	global_position.y += speed * delta
-	
 	shoot_timer -= delta
 	if shoot_timer <= 0:
 		shoot_enemy()
