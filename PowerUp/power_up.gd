@@ -26,10 +26,15 @@ func _physics_process(delta: float) -> void:
 func applyPowerup(body: ShipPlayer):
 	#this will be included in the inheriting class
 	pass
+	
+func applyPowerupIU():
+	#this will be included in the inheriting class
+	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:
 		applyPowerup(body)
+		applyPowerupIU()
 		queue_free()
 
 

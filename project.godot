@@ -28,6 +28,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 damageable=""
+powerup_ui=""
 
 [input]
 
