@@ -25,11 +25,12 @@ func _ready() -> void:
 	hard_enemies = [enemy_scenes[2]]
 	enemy_spawn_timer.wait_time = randf_range(2.0, 3.0) 
 	game_start_time = Time.get_ticks_msec() / 1000.0
+	ship.died.connect(_on_player_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+		TransitionManager.transition_to("res://stage/stage_main.tscn")
 	elif Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 		
@@ -37,6 +38,11 @@ func _process(_delta: float) -> void:
 
 	if time_passed > 30 and enemy_spawn_timer.wait_time > 1.5:
 		enemy_spawn_timer.wait_time = 2.0
+
+	# just for a testing the scene transition effect
+	# press 'enter'
+	if Input.is_action_just_pressed("stageChange"):
+		stageManager.next_stage()
 
 func laser_shot(laser_scene,location):
 	var laser = laser_scene.instantiate()
@@ -90,3 +96,9 @@ func get_weighted_enemy_scene() -> PackedScene:
 		return medium_enemies.pick_random()
 	else:
 		return hard_enemies.pick_random()
+		
+func _on_player_died():
+	# When the player dies, restart the main stage
+	TransitionManager.transition_to("res://stage/stage_main.tscn")
+
+		

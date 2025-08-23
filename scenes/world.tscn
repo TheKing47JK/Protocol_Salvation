@@ -39,4 +39,11 @@ position = Vector2(384, 912)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_aqk2v")]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 696.0
+offset_top = 12.0
+offset_right = 755.0
+offset_bottom = 42.0
+text = "Stage 1"
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

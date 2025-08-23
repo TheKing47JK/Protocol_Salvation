@@ -4,7 +4,6 @@ class_name EnemySplitter
 @export var mini_bot_scene: PackedScene
 @export var mini_bot_count: int = 3
 
-
 func _ready():
 	super._ready()
 	if has_node("MuzzleEnemy"):
@@ -15,6 +14,13 @@ func _physics_process(delta):
 	global_position.y += speed * delta
 
 func die():
+	# Preload the explosion scene resource
+	var explosion_scene = preload("res://scenes/explosion.tscn")
+	# Create an instance of the explosion
+	var explosion = explosion_scene.instantiate()
+	# Place the explosion at this enemy's current position
+	explosion.position = position
+	get_parent().add_child(explosion)
 	call_deferred("_spawn_mini_bots_and_free")
 
 func _spawn_mini_bots_and_free():
@@ -37,7 +43,7 @@ func _spawn_mini_bots_and_free():
 	
 	queue_free()
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:
 		body.take_damage(1)
 		die()

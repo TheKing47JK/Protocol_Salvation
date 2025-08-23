@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxfxu4cdyd1r5"]
+
+[ext_resource type="AudioStream" uid="uid://co5ahdyn0xcvp" path="res://sounds/music.ogg" id="1_x1j0m"]
+[ext_resource type="Script" uid="uid://bm80wec4jkf7b" path="res://scripts/music.gd" id="2_vkry0"]
+
+[node name="musicManager" type="Node"]
+script = ExtResource("2_vkry0")
+game_music = ExtResource("1_x1j0m")
