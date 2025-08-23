@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://csadf3vp02rp0"]
+[gd_scene load_steps=9 format=3 uid="uid://csadf3vp02rp0"]
 
 [ext_resource type="Script" uid="uid://duhm1hj1rk643" path="res://scripts/enemy.gd" id="1_a7q5a"]
 [ext_resource type="Texture2D" uid="uid://cbubsmdot12d3" path="res://sprites/Pixel SHMUP Free/enemy_2_1.png" id="1_jhall"]
 [ext_resource type="Texture2D" uid="uid://dk7sa4hxtp8ao" path="res://sprites/Pixel SHMUP Free/enemy_2_2.png" id="2_a7q5a"]
 [ext_resource type="Texture2D" uid="uid://c1lqrcgoe2ygo" path="res://sprites/Pixel SHMUP Free/enemy_2_3.png" id="3_dodob"]
+[ext_resource type="AudioStream" uid="uid://byn5xc1kux5pc" path="res://sounds/laser_enemy.wav" id="5_d3026"]
+[ext_resource type="AudioStream" uid="uid://d12r6gep5ie84" path="res://sounds/hit_enemy.wav" id="6_l21ug"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ufwdq"]
 animations = [{
@@ -46,6 +48,12 @@ position = Vector2(1, -64)
 
 [node name="MuzzleEnemy" type="Marker2D" parent="."]
 position = Vector2(2, 64)
+
+[node name="ShootSoundEnemy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_d3026")
+
+[node name="HitByPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_l21ug")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
