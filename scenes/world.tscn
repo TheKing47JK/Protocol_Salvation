@@ -38,6 +38,5 @@ z_index = 100
 position = Vector2(384, 912)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_aqk2v")]
-visible = false
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

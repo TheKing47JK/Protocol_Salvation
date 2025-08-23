@@ -23,12 +23,14 @@ func activate_powerup(name: String, duration_sec: float, color: Color) -> void:
 	powerup_label.visible = true
 	powerup_label.modulate.a = 1.0  # reset alpha
 	label_time_left = LABEL_DURATION
-
+	
 	# Show glow and set color/intensity to full
 	corner_glow.visible = true
 	var mat := corner_glow.material as ShaderMaterial
 	mat.set_shader_parameter("glow_color", Color(color.r, color.g, color.b, 1.0))
 	mat.set_shader_parameter("intensity", 1.0)
+	mat.set_shader_parameter("elapsed_time",time_left)
+
 
 func _process(delta: float) -> void:
 	if not active:

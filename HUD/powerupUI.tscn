@@ -10,7 +10,10 @@ shader_parameter/glow_color = Color(1, 0.2, 0.2, 1)
 shader_parameter/thickness = 0.025
 shader_parameter/softness = 0.012
 shader_parameter/intensity = 0.0
-shader_parameter/pulse_speed = 3.0
+shader_parameter/min_intensity = 0.2
+shader_parameter/base_pulse_speed = 3.0
+shader_parameter/max_pulse_speed = 10.0
+shader_parameter/elapsed_time = 0.0
 
 [node name="PowerUpUI" type="Control" groups=["powerup_ui"]]
 layout_mode = 3
