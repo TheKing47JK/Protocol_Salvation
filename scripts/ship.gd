@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") and not shoot_cd:
 		shoot_cd = true
 		shoot()
-		await get_tree().create_timer(rate_of_fire).timeout
+		await get_tree().create_timer(rateOfFire).timeout
 		shoot_cd = false
 
 	animate_the_ship()
@@ -75,20 +75,20 @@ func animate_the_ship() -> void:
 		animated_sprite_2d.play("center")
 
 func take_damage(amount: int) -> void:
-
-# If a hit sound exists, play it
-	if hit_sound:
-		if hit_sound.playing:
-			hit_sound.stop()
-		hit_sound.play()
-	take_damage(damage)
-  
 	if !(invincibilityTimer.is_stopped()):
 		return
 		
 	applyShield(damageInvincibilityTime)
 	armor -= amount
 	Signals.emit_signal("on_player_armor_changed", armor)
+	
+# If a hit sound exists, play it
+	if hit_sound:
+		if hit_sound.playing:
+			hit_sound.stop()
+		hit_sound.play()
+  
+	
 	if armor <= 0:
 		die()
 
@@ -129,4 +129,3 @@ func _on_rapid_fire_timer_timeout() -> void:
 
 func _on_booster_timer_timeout() -> void:
 	speed = normalspeed
-

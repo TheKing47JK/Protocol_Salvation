@@ -13,7 +13,7 @@ uniform float softness = 0.012;
 uniform float intensity : hint_range(0.0, 1.0) = 1.0;
 
 // Minimum intensity value for the glow (keeps it visible)
-uniform float min_intensity : hint_range(0.0, 1.0) = 0.2; 
+uniform float min_intensity : hint_range(0.0, 1.0) = 0.2;
 
 // Base pulse speed (slow at the start)
 uniform float base_pulse_speed = 2.0;
@@ -44,10 +44,10 @@ void fragment() {
 
     // The final alpha should never go below glow_color.a * min_intensity
     // We linearly interpolate between min_intensity and 1.0 based on _current_intensity
-    float effective_intensity = mix(min_intensity, 1.0, intensity); 
+    float effective_intensity = mix(min_intensity, 1.0, intensity);
 
     // Final alpha
-    float alpha = border * effective_intensity * radial_fade * pulse; 
+    float alpha = border * effective_intensity * radial_fade * pulse;
 
     COLOR = vec4(glow_color.rgb, glow_color.a * alpha);
 }

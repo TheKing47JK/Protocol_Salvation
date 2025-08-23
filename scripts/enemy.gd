@@ -136,4 +136,3 @@ func choose_weighted(weights: Dictionary) -> String:
 		if rand_value < cumulative:
 			return name
 	return weights.keys()[0]
-

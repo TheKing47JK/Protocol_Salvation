@@ -1,21 +1,6 @@
 extends "res://scripts/enemy.gd"
 class_name KamikazeBot
 
-
-@export var speed: float = 200
-@export var max_health: int = 2
-# Current health value (set in _ready)
-var health: int
-# Preload the custom HealthBar2D script
-const HealthBar2D = preload("res://scripts/HealthBar2D.gd")
-# Reference to the health bar instance
-var hp_bar: Node2D = null   
-
-var laser_enemy_scene = preload("res://scenes/laser_enemy.tscn")
-signal laser_enemy_shoot(laser_enemy_scene, location)
-var shoot_timer := 0.0
-@onready var hit_by_player: AudioStreamPlayer2D = $HitByPlayer
-
 func _ready():
 	# Initialize health
 	health = max_health
