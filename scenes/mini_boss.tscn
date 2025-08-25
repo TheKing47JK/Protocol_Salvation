@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cccbyfmjw60fg"]
+
+[ext_resource type="Script" uid="uid://byu4agx6c3upg" path="res://scripts/mini_boss.gd" id="2_p6s6w"]
+[ext_resource type="Texture2D" uid="uid://leojvrwb1j4n" path="res://sprites/mini_boss.png" id="2_pso4q"]
+[ext_resource type="AudioStream" uid="uid://d12r6gep5ie84" path="res://sounds/hit_enemy.wav" id="3_p6s6w"]
+[ext_resource type="AudioStream" uid="uid://byn5xc1kux5pc" path="res://sounds/laser_enemy.wav" id="3_rl7on"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pso4q"]
+radius = 207.022
+
+[node name="MiniBoss" type="Area2D" groups=["damageable"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_p6s6w")
+metadata/_custom_type_script = "uid://duhm1hj1rk643"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 3.99999)
+scale = Vector2(0.81, 0.786)
+texture = ExtResource("2_pso4q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -32)
+shape = SubResource("CircleShape2D_pso4q")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ShootSoundEnemy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rl7on")
+
+[node name="HitByPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p6s6w")
+
+[node name="MuzzleEnemy" type="Marker2D" parent="."]
+position = Vector2(-152, 96)
+
+[node name="MuzzleEnemy2" type="Marker2D" parent="."]
+position = Vector2(156, 101)
+
+[node name="MuzzleEnemy3" type="Marker2D" parent="."]
+position = Vector2(89, 101)
+
+[node name="MuzzleEnemy4" type="Marker2D" parent="."]
+position = Vector2(-81, 102)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
