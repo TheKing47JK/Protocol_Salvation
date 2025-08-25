@@ -99,9 +99,12 @@ func die():
 	var explosion = explosion_scene.instantiate()
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
-	queue_free()
+	
+	
 	# Emit a custom signal to notify other scripts that this entity has died
 	died.emit()
+	TransitionManager.transition_to("res://stage/stage_game_over.tscn")
+	queue_free()
 
 
 func applyShield(time:float):

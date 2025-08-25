@@ -4,6 +4,7 @@ class_name MiniBot
 @export var speed: float = 200
 @export var shoot_interval: float = 3
 @export var max_health: int = 3
+@export var points: int = 100
 # Current health value (set in _ready)
 var health: int 
 @onready var muzzle_enemy := $MuzzleEnemy if has_node("MuzzleEnemy") else null
@@ -70,6 +71,7 @@ func die():
 	explosion.position = position
 	get_parent().add_child(explosion)
 	_on_enemy_destroyed(global_position)
+	ScoreManager.add_points(points)
 	queue_free()
 	
 func take_damage(amount: int) -> void:

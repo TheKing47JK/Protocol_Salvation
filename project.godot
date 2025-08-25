@@ -21,6 +21,7 @@ Signals="*res://Autoloads/Signals.gd"
 MusicManager="*res://scenes/musicManager.tscn"
 stageManager="*res://scenes/stageManager.tscn"
 TransitionManager="*res://scripts/TransitionManager.gd"
+ScoreManager="*res://Autoloads/ScoreManager.gd"
 
 [display]
 
