@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://drocexojg8nt4"]
+
+[gd_scene load_steps=12 format=3 uid="uid://drocexojg8nt4"]
+
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_hjwfi"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ut35m"]
@@ -8,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cssu32ybsk7qm" path="res://HUD/hud.tscn" id="5_ki5ds"]
 [ext_resource type="PackedScene" uid="uid://dk05c7nyye6kr" path="res://scenes/ship.tscn" id="6_ro40s"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="7_occcp"]
+
+[ext_resource type="PackedScene" uid="uid://d31qplcv8ulqr" path="res://HUD/progress_bar.tscn" id="7_tk0pw"]
+[ext_resource type="Script" uid="uid://b70jw3rc4elqq" path="res://HUD/progress_bar.gd" id="8_avv4e"]
+[ext_resource type="PackedScene" uid="uid://b6jnp5wf6ioye" path="res://HUD/pause_menu.tscn" id="8_nt3rr"]
+
 
 [node name="stage3" type="Node2D"]
 script = ExtResource("1_hjwfi")
@@ -28,10 +35,20 @@ position = Vector2(384, 910)
 [node name="PowerUpUI" parent="CanvasLayer" instance=ExtResource("5_8qah2")]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_ki5ds")]
+
 offset_left = 19.0
 offset_top = 20.0
 offset_right = 19.0
 offset_bottom = 20.0
+
+[node name="ProgressBar" parent="CanvasLayer" instance=ExtResource("7_tk0pw")]
+offset_left = 29.0
+offset_top = 249.0
+offset_right = 50.0
+offset_bottom = 605.0
+script = ExtResource("8_avv4e")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_nt3rr")]
 
 [node name="Ship" parent="." instance=ExtResource("6_ro40s")]
 z_index = 100
