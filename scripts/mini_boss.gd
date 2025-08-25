@@ -2,9 +2,9 @@ extends "res://scripts/enemy.gd"
 class_name MiniBoss
 
 @export var horizontalSpeed := 100.0
-@export var verticalSpeed := 30.0 
-@export var min_x: float = 100.0
-@export var max_x: float = 700.0
+@export var verticalSpeed := 30.0 	
+@export var min_x: float = 300.0
+@export var max_x: float = 500.0
 @export var start_y: float = 300.0  # choose the vertical level
 @export var current_max_health: int = 50
 @export var bullet_scene: PackedScene
