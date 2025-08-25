@@ -29,10 +29,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("quit"):
-		TransitionManager.transition_to("res://stage/stage_main.tscn")
-	elif Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
 		
 	var time_passed = Time.get_ticks_msec() / 1000.0 - game_start_time
 
