@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bioivdowlyn54"]
+[gd_scene load_steps=10 format=3 uid="uid://bioivdowlyn54"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_ycadj"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ov8wl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bmljgoym5wm1v" path="res://HUD/powerupUI.tscn" id="5_lwygd"]
 [ext_resource type="PackedScene" uid="uid://dk05c7nyye6kr" path="res://scenes/ship.tscn" id="6_rdexs"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="7_234nn"]
+[ext_resource type="PackedScene" uid="uid://defdtk4kosw0j" path="res://scenes/spawner.tscn" id="9_q6r1r"]
 
 [node name="stage2" type="Node2D"]
 script = ExtResource("1_ycadj")
@@ -45,5 +46,7 @@ offset_top = 10.0
 offset_right = 751.0
 offset_bottom = 33.0
 text = "Stage 2"
+
+[node name="Spawner" parent="." instance=ExtResource("9_q6r1r")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

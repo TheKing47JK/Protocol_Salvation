@@ -14,17 +14,21 @@ extends Node2D
 }
 
 # Wave data
-var stages: Array = []
+var stages: Dictionary = {}
 var current_stage := 0
 var current_wave := 0
 var spawn_timer: Timer
-
+var current_stage_name = ""
 func laser_enemy_shot(laser_enemy_scene, location):
 	var laser = laser_enemy_scene.instantiate()
 	laser.global_position = location
 	laser_container.add_child(laser)
 
 func _ready():
+	# Get the current node name
+	current_stage_name = get_tree().current_scene.name
+	print("Current Stage: ", current_stage_name)
+	
 	# Load waves.json
 	var file := FileAccess.open("res://waves.json", FileAccess.READ)
 	if file:
@@ -38,17 +42,21 @@ func _ready():
 	spawn_timer.one_shot = true
 	add_child(spawn_timer)
 	spawn_timer.timeout.connect(_on_spawn_wave)
-
+	
 	# Start first wave
 	start_next_wave()
 
 
 func start_next_wave():
+	if not stages.has(current_stage_name):
+		print("No stage data found for: ", current_stage_name)
+		return
+		
 	if current_stage >= stages.size():
 		print("All stages complete!")
 		return
 
-	var waves = stages[current_stage]["waves"]
+	var waves = stages[current_stage_name]["waves"]
 
 	if current_wave < waves.size():
 		var wave = waves[current_wave]
@@ -63,7 +71,7 @@ func start_next_wave():
 
 
 func _on_spawn_wave():
-	var waves = stages[current_stage]["waves"]
+	var waves = stages[current_stage_name]["waves"]
 	var wave = waves[current_wave]
 
 	match wave["type"]:
