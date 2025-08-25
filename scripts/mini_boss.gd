@@ -86,7 +86,7 @@ func _ensure_hp_bar() -> void:
 	hp_bar.name = "HPBar"
 	add_child(hp_bar)
 	# Configure its position above the bot and size
-	hp_bar.offset = Vector2(0, -50)
+	hp_bar.offset = Vector2(0, -150)
 	hp_bar.size = Vector2(58, 12)
 
 func _update_hp_bar() -> void:
