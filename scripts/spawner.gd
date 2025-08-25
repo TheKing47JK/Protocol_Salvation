@@ -19,6 +19,7 @@ var current_stage := 0
 var current_wave := 0
 var spawn_timer: Timer
 var current_stage_name = ""
+
 func laser_enemy_shot(laser_enemy_scene, location):
 	var laser = laser_enemy_scene.instantiate()
 	laser.global_position = location
@@ -48,6 +49,7 @@ func _ready():
 
 
 func start_next_wave():
+	# Check if stages detected
 	if not stages.has(current_stage_name):
 		print("No stage data found for: ", current_stage_name)
 		return

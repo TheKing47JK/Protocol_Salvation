@@ -2,7 +2,7 @@
   "stages": {
     "stage1": {
       "waves": [
-{
+  {
           "type": "v-shape",
           "enemies": ["normal"],
           "count": 5,

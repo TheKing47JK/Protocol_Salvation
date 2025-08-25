@@ -1,0 +1,269 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6jnp5wf6ioye"]
+
+[ext_resource type="Script" uid="uid://dsy78bnngh8qp" path="res://HUD/pause_menu.gd" id="1_3mb04"]
+[ext_resource type="Shader" uid="uid://c1efgfevyu1uh" path="res://HUD/pause_menu.gdshader" id="1_affeh"]
+[ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="1_uga5p"]
+[ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="2_affeh"]
+[ext_resource type="Texture2D" uid="uid://c5nha4qi0g0of" path="res://sprites/button_hover.png" id="3_3mb04"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="5_egt6w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mb04"]
+shader = ExtResource("1_affeh")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_affeh"]
+resource_name = "blur"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_3mb04"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0iu4"]
+_data = {
+&"RESET": SubResource("Animation_3mb04"),
+&"blur": SubResource("Animation_affeh")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mb04")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3mb04")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -239.5
+offset_right = 205.0
+offset_bottom = 239.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btn_resume" type="TextureButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 133.0
+grow_horizontal = 2
+texture_normal = ExtResource("1_uga5p")
+texture_pressed = ExtResource("2_affeh")
+texture_hover = ExtResource("3_3mb04")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel/btn_resume"]
+z_index = 2
+layout_mode = 0
+offset_left = 21.0
+offset_top = 2.5
+offset_right = 387.0
+offset_bottom = 137.5
+theme_override_fonts/font = ExtResource("5_egt6w")
+theme_override_font_sizes/font_size = 150
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="btn_restart" type="TextureButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -66.5
+offset_right = 200.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_uga5p")
+texture_pressed = ExtResource("2_affeh")
+texture_hover = ExtResource("3_3mb04")
+stretch_mode = 0
+
+[node name="Label3" type="Label" parent="Panel/btn_restart"]
+z_index = 2
+layout_mode = 0
+offset_left = 12.0
+offset_top = -2.5
+offset_right = 406.0
+offset_bottom = 132.5
+theme_override_fonts/font = ExtResource("5_egt6w")
+theme_override_font_sizes/font_size = 150
+text = "restart"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="btn_menu" type="TextureButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -133.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("1_uga5p")
+texture_pressed = ExtResource("2_affeh")
+texture_hover = ExtResource("3_3mb04")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Panel/btn_menu"]
+z_index = 2
+layout_mode = 0
+offset_left = 17.0
+offset_top = -2.5
+offset_right = 383.0
+offset_bottom = 132.5
+theme_override_fonts/font = ExtResource("5_egt6w")
+theme_override_font_sizes/font_size = 150
+text = "menu"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g0iu4")
+}
+
+[connection signal="pressed" from="Panel/btn_resume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="Panel/btn_restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="Panel/btn_menu" to="." method="_on_btn_menu_pressed"]
