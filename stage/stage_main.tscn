@@ -38,16 +38,15 @@ texture_hover = ExtResource("4_2oo14")
 stretch_mode = 0
 script = ExtResource("5_rw745")
 
-[node name="Label" type="Label" parent="control/btn_start"]
-z_index = 2
+[node name="start" type="Label" parent="control/btn_start"]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 199.0
+offset_top = 0.5
 offset_right = 378.0
-offset_bottom = 334.0
+offset_bottom = 135.5
 theme_override_fonts/font = ExtResource("5_swd1u")
 theme_override_font_sizes/font_size = 150
-text = "QUIT"
+text = "START"
 horizontal_alignment = 1
 vertical_alignment = 3
 uppercase = true
@@ -70,15 +69,15 @@ texture_hover = ExtResource("4_2oo14")
 stretch_mode = 0
 script = ExtResource("7_01aic")
 
-[node name="Label" type="Label" parent="control/btn_quit"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = -198.0
-offset_right = 378.0
-offset_bottom = -63.0
+[node name="quit" type="Label" parent="control"]
+z_index = 2
+offset_left = 207.0
+offset_top = 643.5
+offset_right = 573.0
+offset_bottom = 778.5
 theme_override_fonts/font = ExtResource("5_swd1u")
 theme_override_font_sizes/font_size = 150
-text = "START"
+text = "QUIT"
 horizontal_alignment = 1
 vertical_alignment = 3
 uppercase = true
