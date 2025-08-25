@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtgsvp7yn7yqr"]
+
+[ext_resource type="Script" uid="uid://baxlrvjcwcguy" path="res://scenes/option.gd" id="1_4u85i"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="1_qt2fl"]
+
+[node name="Option" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4u85i")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Option" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 125.0
+offset_right = 119.0
+offset_bottom = 205.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_qt2fl")
+theme_override_font_sizes/font_size = 100
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="Label" parent="Panel"]
+offset_left = 98.0
+offset_top = 247.0
+offset_right = 660.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("1_qt2fl")
+theme_override_font_sizes/font_size = 50
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Panel"]
+offset_left = 103.0
+offset_top = 294.0
+offset_right = 665.0
+offset_bottom = 310.0
+step = 0.001
+
+[node name="Mute" type="Label" parent="Panel"]
+offset_left = 95.0
+offset_top = 396.0
+offset_right = 657.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("1_qt2fl")
+theme_override_font_sizes/font_size = 50
+text = "Mute"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel"]
+offset_left = 369.0
+offset_top = 463.0
+offset_right = 393.0
+offset_bottom = 487.0
+size_flags_horizontal = 4
+
+[connection signal="value_changed" from="Panel/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="Panel/CheckBox" to="." method="_on_check_box_toggled"]
