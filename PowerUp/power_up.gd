@@ -3,6 +3,7 @@ extends Area2D
 
 @export var powerup_movespeed: float =100
 @export var screen_margin: int = 16 # margin so it won’t clip offscreen
+var pickup_sound: AudioStream = preload("res://sounds/powerup.wav")
 
 var screen_size: Vector2
 var direction: Vector2
@@ -35,6 +36,12 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:
 		applyPowerup(body)
 		applyPowerupIU()
+		var audio_player := AudioStreamPlayer.new()
+		audio_player.stream = pickup_sound
+		get_tree().current_scene.add_child(audio_player)
+		audio_player.play()
+
+		audio_player.finished.connect(audio_player.queue_free)
 		queue_free()
 
 

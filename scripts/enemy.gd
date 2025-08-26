@@ -118,8 +118,8 @@ func _on_enemy_destroyed(position: Vector2):
 	var powerup_name = choose_weighted(weights)
 	var scene = POWERUPS[powerup_name]
 	var powerup = scene.instantiate()
-	get_parent().add_child(powerup)
 	powerup.global_position = position
+	get_parent().call_deferred("add_child",powerup)
 
 
 func choose_weighted(weights: Dictionary) -> String:
