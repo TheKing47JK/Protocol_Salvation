@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://bptbine8ar53o"]
+
+[ext_resource type="Texture2D" uid="uid://duv3y5lrbsw3n" path="res://you-win-text-pixel-art-style-321008842-removebg-preview.png" id="1_rbcjn"]
+[ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="2_42odw"]
+[ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="3_0t2t5"]
+[ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="4_57ji1"]
+[ext_resource type="Texture2D" uid="uid://c5nha4qi0g0of" path="res://sprites/button_hover.png" id="5_pqiop"]
+[ext_resource type="Script" uid="uid://3f3cvg86kk4f" path="res://scripts/btn_restart.gd" id="6_p88u0"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="7_sx1x3"]
+[ext_resource type="Script" uid="uid://dlhrue3ugwxan" path="res://scripts/btn_menu.gd" id="8_iy53a"]
+
+[node name="WinScene" type="Node2D"]
+
+[node name="You-win-text-pixel-art-style-321008842-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(386, 320)
+scale = Vector2(1.09055, 1.15903)
+texture = ExtResource("1_rbcjn")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_42odw")]
+
+[node name="control" type="CanvasLayer" parent="."]
+
+[node name="btn_restart" type="TextureButton" parent="control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = 5.0
+offset_right = 224.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_0t2t5")
+texture_pressed = ExtResource("4_57ji1")
+texture_hover = ExtResource("5_pqiop")
+stretch_mode = 0
+script = ExtResource("6_p88u0")
+
+[node name="start" type="Label" parent="control/btn_restart"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 3.0
+offset_right = 427.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("7_sx1x3")
+theme_override_font_sizes/font_size = 150
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="btn_menu" type="TextureButton" parent="control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = 200.0
+offset_right = 192.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_0t2t5")
+texture_pressed = ExtResource("4_57ji1")
+texture_hover = ExtResource("5_pqiop")
+stretch_mode = 0
+script = ExtResource("8_iy53a")
+
+[node name="quit" type="Label" parent="control/btn_menu"]
+z_index = 2
+offset_left = 11.0
+offset_top = 2.5
+offset_right = 377.0
+offset_bottom = 137.5
+theme_override_fonts/font = ExtResource("7_sx1x3")
+theme_override_font_sizes/font_size = 150
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
