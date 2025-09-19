@@ -1,12 +1,14 @@
 extends AnimatedSprite2D
 
 func _ready():
-	# Play the explosion sound effect when the node is created
-	$AudioStreamPlayer2D.play()
-	# Start the "explosion" animation
 	play("explosion")
-	# Connect the animation_finished signal to a cleanup function
+	$AudioStreamPlayer2D.play()
 	connect("animation_finished", Callable(self, "_on_finished"))
+
+	# When the enemy explodes, the screen shakes slightly
+	var cam = get_tree().get_first_node_in_group("main_camera")
+	if cam:
+		cam.shake(6)
 
 func _on_finished():
 	queue_free()

@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://degs8d2h837x7"]
+
+[ext_resource type="Texture2D" uid="uid://duv3y5lrbsw3n" path="res://you-win-text-pixel-art-style-321008842-removebg-preview.png" id="1_531e2"]
+[ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="1_r4oei"]
+[ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="3_d70ak"]
+[ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="4_woh6y"]
+[ext_resource type="Texture2D" uid="uid://c5nha4qi0g0of" path="res://sprites/button_hover.png" id="5_rx2gv"]
+[ext_resource type="Script" uid="uid://ckgm6ttrnpa8n" path="res://scenes/btn_nextstage.gd" id="6_doh3d"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="7_ir6vj"]
+[ext_resource type="Script" uid="uid://dlhrue3ugwxan" path="res://scripts/btn_menu.gd" id="8_5dn2x"]
+
+[node name="WinNextStage" type="Node2D"]
+
+[node name="You-win-text-pixel-art-style-321008842-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(386, 320)
+scale = Vector2(1.09055, 1.15903)
+texture = ExtResource("1_531e2")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("1_r4oei")]
+
+[node name="control" type="CanvasLayer" parent="."]
+
+[node name="btn_nextstage" type="TextureButton" parent="control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -55.0
+offset_right = 320.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_d70ak")
+texture_pressed = ExtResource("4_woh6y")
+texture_hover = ExtResource("5_rx2gv")
+stretch_mode = 0
+script = ExtResource("6_doh3d")
+
+[node name="nextsatge" type="Label" parent="control/btn_nextstage"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 17.0
+offset_right = 590.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("7_ir6vj")
+theme_override_font_sizes/font_size = 150
+text = "NExt Stage"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="btn_menu" type="TextureButton" parent="control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = 173.0
+offset_right = 206.0
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_d70ak")
+texture_pressed = ExtResource("4_woh6y")
+texture_hover = ExtResource("5_rx2gv")
+stretch_mode = 0
+script = ExtResource("8_5dn2x")
+
+[node name="quit" type="Label" parent="control/btn_menu"]
+z_index = 2
+offset_left = 11.0
+offset_top = 2.5
+offset_right = 377.0
+offset_bottom = 137.5
+theme_override_fonts/font = ExtResource("7_ir6vj")
+theme_override_font_sizes/font_size = 150
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true

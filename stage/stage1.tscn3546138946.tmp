@@ -16,6 +16,7 @@
 [node name="stage1" type="Node2D"]
 script = ExtResource("1_3ikxw")
 enemy_scenes = Array[PackedScene]([ExtResource("2_e7fe8"), ExtResource("3_bwayr"), ExtResource("4_vf5ng")])
+miniboss_scene = null
 
 [node name="Spawner" parent="." instance=ExtResource("5_bwayr")]
 
