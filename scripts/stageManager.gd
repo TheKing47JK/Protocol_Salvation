@@ -21,8 +21,10 @@ func load_stage(index: int):
 		# Use the TransitionManager to switch scenes with a fade effect
 		if index == 1:
 			lvl1_completed = true
+			current_stage_index = 1
 		if index == 2:
 			lvl2_completed = true
+			current_stage_index = 2
 		TransitionManager.transition_to(stages[index], 1.0)
 	else:
 		# If there are no more stages, go to the Win scene

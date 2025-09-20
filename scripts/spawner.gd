@@ -27,6 +27,7 @@ func laser_enemy_shot(laser_enemy_scene, location):
 	laser_container.add_child(laser)
 
 func _ready():
+	monitor_boss_defeat()
 	# Get the current node name
 	current_stage_name = get_tree().current_scene.name
 	print("Current Stage: ", current_stage_name)
@@ -110,6 +111,7 @@ func _on_spawn_wave():
 		start_next_wave()
 	
 func monitor_boss_defeat() -> void:
+	await ready  # ensure we're in the tree
 	var enemy_container = get_node("EnemyContainer") # adjust path if needed
 
 	# Wait until at least one boss actually appears inside EnemyContainer
@@ -121,7 +123,7 @@ func monitor_boss_defeat() -> void:
 				break
 		if found_boss:
 			break
-		await get_tree().create_timer(0.1).timeout # check often until boss spawns
+		await get_tree().create_timer(0.1).timeout
 
 	# Now wait until no boss remains in EnemyContainer
 	while true:
@@ -140,7 +142,7 @@ func monitor_boss_defeat() -> void:
 func _on_boss_defeated():
 	print("Boss defeated! Transitioning to Win screen...")
 	await get_tree().create_timer(3.0).timeout # optional delay for effects
-	TransitionManager.transition_to("res://scenes/Win.tscn", 1.0)
+	TransitionManager.transition_to("res://scenes/StageClear.tscn", 1.0)
 	
 func spawn_boss(wave: Dictionary):
 	var enemies: Array = wave.get("enemies", []) # list of enemy types

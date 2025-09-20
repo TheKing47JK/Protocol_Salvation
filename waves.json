@@ -176,9 +176,8 @@
 	},
 	{
 	  "type": "row",
-	  "enemies": ["kamikaze", "normal", "splitting"],
-	  "count": 2,
-	  "start_x": 0,
+	  "enemies": ["kamikaze", "normal", "kamikaze"],
+	  "count": 3,
 	  "delay": 4.0
 	},
 	{
