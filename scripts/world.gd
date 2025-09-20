@@ -7,8 +7,6 @@ extends Node2D
 @onready var enemy_container: Node2D = $EnemyContainer
 
 @export var enemy_scenes: Array[PackedScene] = []
-# for me to test the miniboss shaking effect
-#@export var miniboss_scene: PackedScene = preload("res://scenes/mini_boss.tscn")
 
 var easy_enemies: Array[PackedScene] = []
 var medium_enemies: Array[PackedScene] = []
@@ -17,11 +15,9 @@ var game_start_time: float = 0.0
 var easy_weight := 1.0
 var medium_weight := 0.0
 var hard_weight := 0.0
-@onready var camera = $Camera2D
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not ship.is_connected("died", Callable(self, "_on_player_died")):
-		ship.connect("died", Callable(self, "_on_player_died"))
 	ship.global_position = player_spawn_position.global_position
 	ship.laser_shoot.connect(laser_shot)
 	easy_enemies = [enemy_scenes[0]]
@@ -29,25 +25,18 @@ func _ready() -> void:
 	hard_enemies = [enemy_scenes[2]]
 	enemy_spawn_timer.wait_time = randf_range(2.0, 3.0) 
 	game_start_time = Time.get_ticks_msec() / 1000.0
-	
-	# just for me to test the boss shaking
-	#_spawn_miniboss()
+	ship.died.connect(_on_player_died)
 
-#func _spawn_miniboss() -> void:
-	#if miniboss_scene:
-		#var boss = miniboss_scene.instantiate()
-		#if boss.has_signal("laser_enemy_shoot"):
-			#boss.laser_enemy_shoot.connect(laser_enemy_shot)
-		#enemy_container.add_child(boss)
-		#boss.global_position = Vector2(400, 200)  # 出现位置（可调整）
-
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+		
 	var time_passed = Time.get_ticks_msec() / 1000.0 - game_start_time
 
 	if time_passed > 30 and enemy_spawn_timer.wait_time > 1.5:
 		enemy_spawn_timer.wait_time = 2.0
 
+	# just for a testing the scene transition effect
+	# press 'enter'
 	if Input.is_action_just_pressed("stageChange"):
 		stageManager.next_stage()
 
@@ -62,6 +51,7 @@ func laser_enemy_shot(laser_enemy_scene, location):
 	laser_container.add_child(laser)
 
 func _on_enemy_spawn_timer_timeout() -> void:
+
 	var current_time = Time.get_ticks_msec() / 1000.0
 	var time_passed = current_time - game_start_time
 
@@ -104,6 +94,7 @@ func get_weighted_enemy_scene() -> PackedScene:
 		return hard_enemies.pick_random()
 		
 func _on_player_died():
-	camera.zoom_in(1.5, 1.0)
-	camera.shake(20.0)
-	TransitionManager.transition_to("res://scenes/lost.tscn")
+	# When the player dies, restart the main stage
+	TransitionManager.transition_to("res://stage/stage_main.tscn")
+
+		

@@ -43,6 +43,9 @@ func _physics_process(delta: float) -> void:
 func shoot_enemy():
 	for muzzle_enemy in muzzles_enemy:
 		laser_enemy_shoot.emit(laser_enemy_scene, muzzle_enemy.global_position)
+
+	# If a shooting sound exists, play it (restart if it is already playing)
+
 	if shoot_sound_enemy:
 		if shoot_sound_enemy.playing:
 			shoot_sound_enemy.stop()
@@ -100,22 +103,27 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 	
 func _ensure_hp_bar() -> void:
+
 	if hp_bar and hp_bar.is_inside_tree(): return
 	hp_bar = HealthBar2D.new()
 	hp_bar.name = "HPBar"
 	add_child(hp_bar)
+
 	hp_bar.offset = Vector2(7, -50)
 	hp_bar.size = Vector2(258, 22)
 
 func _update_hp_bar() -> void:
+
 	if hp_bar:
 		var r := float(health) / float(current_max_health)
 		hp_bar.set_ratio(r)
 		hp_bar.visible = health > 0
 
+
 func _on_enemy_destroyed(position: Vector2):
 	if randf() * 100 > drop_chance:
 		return  
+
 	var powerup_name = choose_weighted(weights)
 	var scene = POWERUPS[powerup_name]
 	var powerup = scene.instantiate()
@@ -126,8 +134,10 @@ func choose_weighted(weights: Dictionary) -> String:
 	var total_weight = 0
 	for w in weights.values():
 		total_weight += w
+
 	var rand_value = randi() % total_weight
 	var cumulative = 0
+
 	for name in weights.keys():
 		cumulative += weights[name]
 		if rand_value < cumulative:

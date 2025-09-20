@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=6 format=3 uid="uid://bcvl14hhnpsi5"]
 
 [ext_resource type="Script" uid="uid://cyebw0x0cef8q" path="res://scripts/final_boss.gd" id="1_723ie"]
@@ -8,6 +9,7 @@
 
 [node name="FinalBoss" type="Area2D" groups=["boss", "damageable"]]
 position = Vector2(386, 125)
+
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_723ie")

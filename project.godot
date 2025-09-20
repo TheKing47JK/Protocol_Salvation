@@ -38,6 +38,7 @@ damageable=""
 powerup_ui=""
 boss=""
 
+
 [input]
 
 move_up={

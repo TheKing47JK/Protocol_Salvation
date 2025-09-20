@@ -1,6 +1,5 @@
 extends AnimatedSprite2D
 
-func _ready():
 	play("explosion")
 
 	# Play spark particles

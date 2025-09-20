@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 func _ready():
+	# Play the "explode" animation immediately when the node is ready
 	play("explode")
 
 	# Play spark particles
@@ -30,4 +31,6 @@ func _on_animation_finished():
 
 	if active_sound:
 		await active_sound.finished  # Wait until sound done
+
 	queue_free()
+	#get_tree().change_scene_to_file("res://scenes/GameOver.tscn")

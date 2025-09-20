@@ -1,0 +1,202 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvj1c1qtdm7k4"]
+
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="1_na1ne"]
+[ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="2_dyxv4"]
+[ext_resource type="Script" uid="uid://b84f6rp0ntp85" path="res://HUD/settings.gd" id="2_v2f1a"]
+[ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="3_itp8v"]
+[ext_resource type="Texture2D" uid="uid://c5nha4qi0g0of" path="res://sprites/button_hover.png" id="4_wvd4o"]
+[ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="5_itp8v"]
+[ext_resource type="Script" uid="uid://bdheo2yj01wsr" path="res://HUD/btn_back.gd" id="6_wvd4o"]
+[ext_resource type="AudioStream" uid="uid://co5ahdyn0xcvp" path="res://sounds/music.ogg" id="7_v2f1a"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wvd4o"]
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_v2f1a"]
+color = Color(0.952941, 0.356863, 0, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pm6b1"]
+color = Color(0.952941, 0.356863, 0, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm6b1"]
+content_margin_left = 12.0
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_v2f1a")
+
+[node name="setting_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="settings" type="Label" parent="setting_panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_na1ne")
+theme_override_font_sizes/font_size = 171
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="control" type="CanvasLayer" parent="setting_panel"]
+
+[node name="Master" type="HSlider" parent="setting_panel/control"]
+offset_left = 133.0
+offset_top = 241.0
+offset_right = 650.0
+offset_bottom = 345.0
+theme_override_styles/slider = SubResource("StyleBoxLine_wvd4o")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_v2f1a")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pm6b1")
+value = 2.0
+
+[node name="master" type="Label" parent="setting_panel/control/Master"]
+layout_mode = 0
+offset_top = -34.0
+offset_right = 265.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1_na1ne")
+theme_override_font_sizes/font_size = 70
+text = "MASTER VOLUME"
+vertical_alignment = 1
+
+[node name="btn_back" type="TextureButton" parent="setting_panel/control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = 317.0
+offset_right = 191.0
+offset_bottom = 452.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture_normal = ExtResource("2_dyxv4")
+texture_pressed = ExtResource("3_itp8v")
+texture_hover = ExtResource("4_wvd4o")
+stretch_mode = 0
+script = ExtResource("6_wvd4o")
+
+[node name="back" type="Label" parent="setting_panel/control/btn_back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -49.5
+offset_right = 230.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_na1ne")
+theme_override_font_sizes/font_size = 113
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="Mute" type="CheckBox" parent="setting_panel/control"]
+offset_left = 142.0
+offset_top = 522.0
+offset_right = 182.0
+offset_bottom = 567.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pm6b1")
+
+[node name="mute" type="Label" parent="setting_panel/control/Mute"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -62.0
+offset_right = 150.0
+offset_bottom = -6.0
+theme_override_fonts/font = ExtResource("1_na1ne")
+theme_override_font_sizes/font_size = 70
+text = "Mute"
+vertical_alignment = 1
+
+[node name="Music" type="HSlider" parent="setting_panel/control"]
+offset_left = 138.0
+offset_top = 377.0
+offset_right = 655.0
+offset_bottom = 481.0
+theme_override_styles/slider = SubResource("StyleBoxLine_wvd4o")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_v2f1a")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pm6b1")
+value = 1.0
+
+[node name="music" type="Label" parent="setting_panel/control/Music"]
+layout_mode = 0
+offset_top = -34.0
+offset_right = 265.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1_na1ne")
+theme_override_font_sizes/font_size = 70
+text = "Music"
+vertical_alignment = 1
+
+[node name="btn_confirm" type="TextureButton" parent="setting_panel/control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = 154.0
+offset_right = 188.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture_normal = ExtResource("2_dyxv4")
+texture_pressed = ExtResource("3_itp8v")
+texture_hover = ExtResource("4_wvd4o")
+stretch_mode = 0
+
+[node name="confirm" type="Label" parent="setting_panel/control/btn_confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -53.5
+offset_right = 234.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_na1ne")
+theme_override_font_sizes/font_size = 113
+text = "Apply"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="SpaceBackground" parent="." instance=ExtResource("5_itp8v")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_v2f1a")
+bus = &"Music"
+
+[connection signal="value_changed" from="setting_panel/control/Master" to="." method="_on_master_value_changed"]
+[connection signal="toggled" from="setting_panel/control/Mute" to="." method="_on_mute_toggled"]
+[connection signal="value_changed" from="setting_panel/control/Music" to="." method="_on_music_value_changed"]
+[connection signal="pressed" from="setting_panel/control/btn_confirm" to="." method="_on_btn_confirm_pressed"]
