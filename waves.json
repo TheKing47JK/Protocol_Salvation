@@ -1,53 +1,138 @@
 {
   "stages": {
 	"stage1": {
-	  "waves": [
-		{
-		  "type": "row",
-		  "enemies": ["normal"],
-		  "count": 4,
-		  "start_x": 400,
-		  "delay": 5.0
+		  "waves": [
+			{
+			  "type": "row",
+			  "enemies": ["normal"],
+			  "count": 4,
+			  "start_x": 400,
+			  "delay": 5.0
+			},
+			{
+			  "type": "line",
+			  "enemies": ["normal"],
+			  "count": 5,
+			  "start_x": 400,
+			  "delay": 5.0
+			},
+			{
+			  "type": "v-shape",
+			  "enemies": ["normal"],
+			  "count": 5,
+			  "delay": 5.0
+			},
+			{
+			  "type": "row",
+			  "enemies": ["bouncing"],
+			  "count": 3,
+			  "start_x": 0,
+			  "delay": 5.0
+			},
+			{
+			  "type": "line",
+			  "enemies": ["normal"],
+			  "count": 4,
+			  "start_x": 300,
+			  "delay": 5.0
+			},
+			{
+			  "type": "v-shape",
+			  "enemies": ["splitting"],
+			  "count": 3,
+			  "delay": 5.0
+			},
+			{
+			  "type": "row",
+			  "enemies": ["bouncing"],
+			  "count": 3,
+			  "start_x": 400,
+			  "delay": 5.0
 		},
 		{
 		  "type": "line",
-		  "enemies": ["normal"],
-		  "count": 5,
-		  "start_x": 400,
+		  "enemies": ["bouncing"],
+		  "count": 4,
+		  "start_x": 600,
 		  "delay": 5.0
 		},
 		{
 		  "type": "v-shape",
-		  "enemies": ["normal"],
+		  "enemies": ["bouncing"],
 		  "count": 5,
 		  "delay": 5.0
 		},
 		{
 		  "type": "row",
 		  "enemies": ["splitting"],
-		  "count": 3,
+		  "count": 2,
 		  "start_x": 0,
 		  "delay": 5.0
 		},
 		{
 		  "type": "line",
-		  "enemies": ["normal"],
-		  "count": 4,
-		  "start_x": 300,
+		  "enemies": ["bouncing"],
+		  "count": 5,
+		  "start_x": 500,
 		  "delay": 5.0
 		},
 		{
 		  "type": "v-shape",
-		  "enemies": ["splitting"],
+		  "enemies": ["bouncing"],
 		  "count": 5,
 		  "delay": 5.0
 		},
 		{
 		  "type": "row",
-		  "enemies": ["bouncing"],
-		  "count": 3,
+		  "enemies": ["splitting", "bouncing"],
+		  "count": 2,
 		  "start_x": 400,
 		  "delay": 5.0
+		}
+	  ]
+	},
+	"stage2": {
+  "waves": [
+	{
+	  "type": "row",
+	  "enemies": ["kamikaze"],
+	  "count": 4,
+	  "start_x": 0,
+	  "delay": 4.0
+	},
+	{
+	  "type": "row",
+	  "enemies": ["kamikaze"],
+	  "count": 4,
+	  "start_x": 400,
+	  "delay": 4.0
+	},
+	{
+	  "type": "line",
+	  "enemies": ["normal"],
+	  "count": 5,
+	  "start_x": 300,
+	  "delay": 5.0
+	},
+	{
+	  "type": "v-shape",
+	  "enemies": ["splitting"],
+	  "count": 3,
+	  "delay": 5.0
+	},
+	{
+	  "type": "row",
+	  "enemies": ["kamikaze", "normal"],
+	  "count": 3,
+	  "start_x": 0,
+	  "delay": 4.0
+	},
+	{
+	  "type": "row",
+	  "enemies": ["normal","kamikaze" ],
+	  "count": 3,
+	  "start_x": 250,
+	  "delay": 4.0
 	},
 	{
 	  "type": "line",
@@ -58,89 +143,56 @@
 	},
 	{
 	  "type": "v-shape",
-	  "enemies": ["bouncing"],
+	  "enemies": ["normal"],
 	  "count": 5,
 	  "delay": 5.0
 	},
 	{
 	  "type": "row",
-	  "enemies": ["splitting"],
+	  "enemies": ["kamikaze"],
 	  "count": 5,
 	  "start_x": 0,
-	  "delay": 5.0
+	  "delay": 4.0
+	},
+	{
+	  "type": "row",
+	  "enemies": ["kamikaze"],
+	  "count": 5,
+	  "start_x": 400,
+	  "delay": 4.0
 	},
 	{
 	  "type": "line",
-	  "enemies": ["bouncing"],
-	  "count": 5,
-	  "start_x": 500,
+	  "enemies": ["splitting"],
+	  "count": 2,
+	  "start_x": 200,
 	  "delay": 5.0
 	},
 	{
 	  "type": "v-shape",
 	  "enemies": ["bouncing"],
-	  "count": 5,
+	  "count": 4,
 	  "delay": 5.0
 	},
 	{
 	  "type": "row",
-	  "enemies": ["splitting", "bouncing"],
-	  "count": 3,
-	  "start_x": 400,
+	  "enemies": ["kamikaze", "normal", "splitting"],
+	  "count": 2,
+	  "start_x": 0,
+	  "delay": 4.0
+	},
+	{
+	  "type": "row",
+	  "enemies": ["kamikaze"],
+	  "count": 8,
+	  "delay": 5.0
+	},
+	{
+	  "type": "boss",
+	  "enemies": ["miniboss"],
 	  "delay": 5.0
 	}
   ]
-},
-	"stage2": {
-	  "waves": [
-		{
-		  "type": "row",
-		  "enemies": ["finalboss"],
-		  "count": 1,
-		  "start_x":0,
-		  "delay": 2.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "count": 5,
-		  "start_x": 300,
-		  "delay": 4.0
-		},
-		{
-		  "type": "line",
-		  "enemies": ["normal"],
-		  "count":5,
-		  "delay": 7.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal"],
-		  "delay": 10.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal", "kamikaze", "normal", "kamikaze", "normal"],
-		  "start_x": 0,
-		  "delay": 20.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "count":7,
-		  "delay": 25.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal"],
-		  "delay": 30.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["miniboss"],
-		  "delay": 35.0
-		}
-	  ]
-	}
+}
   }
 }
