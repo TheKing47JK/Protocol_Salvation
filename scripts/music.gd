@@ -7,6 +7,7 @@ extends Node
 @export var fade_in_time: float = 0.3
 @export var bus: StringName = &"Music"
 @export var game_music: AudioStream
+@export var target_volume_db: float = -6.0  # ≈ 50% volume
 
 func _ready() -> void:
 	# Add the audio player as a child so it will run in the scene tree
@@ -18,16 +19,16 @@ func _ready() -> void:
 		if "loop" in game_music:
 			game_music.loop = true
 		player.stream = game_music
-		# Start silent, then fade in to full volume
+		# Start silent, then fade in to target volume
 		if fade_in_time > 0.0:
 			player.volume_db = -40.0
 			player.play()
 			var tween := create_tween()
-			tween.tween_property(player, "volume_db", 0.0, fade_in_time)
+			tween.tween_property(player, "volume_db", target_volume_db, fade_in_time)
 			await tween.finished
 		else:
-			# Play instantly at full volume
-			player.volume_db = 0.0
+			# Play instantly at target volume
+			player.volume_db = target_volume_db
 			player.play()
 
 # Stop the background music, optionally with a fade-out
@@ -41,4 +42,4 @@ func stop_bgm(fade_out: float = 0.8) -> void:
 	tween.tween_property(player, "volume_db", -40.0, fade_out)
 	await tween.finished
 	player.stop()
-	player.volume_db = 0.0
+	player.volume_db = target_volume_db

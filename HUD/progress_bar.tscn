@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d31qplcv8ulqr"]
+[gd_scene load_steps=4 format=3 uid="uid://d31qplcv8ulqr"]
 
+[ext_resource type="Script" uid="uid://b70jw3rc4elqq" path="res://HUD/progress_bar.gd" id="1_hjm4j"]
 [ext_resource type="Texture2D" uid="uid://ca36d3xggrnjg" path="res://sprites/Pixel SHMUP Free/UI/icon-ship.png" id="2_8un81"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8un81"]
@@ -18,6 +19,7 @@ offset_bottom = 358.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_8un81")
 fill_mode = 3
 show_percentage = false
+script = ExtResource("1_hjm4j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(11, 346)

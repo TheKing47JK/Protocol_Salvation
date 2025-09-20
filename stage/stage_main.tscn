@@ -1,15 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvvbfmbavqy36"]
+[gd_scene load_steps=11 format=3 uid="uid://bvvbfmbavqy36"]
 
 [ext_resource type="Texture2D" uid="uid://ch4siehj56tn5" path="res://sprites/logo_sprite.png" id="1_2oo14"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="1_5aisn"]
+[ext_resource type="Script" uid="uid://dpn4yqo3ukha8" path="res://stage/stage_main.gd" id="1_f83le"]
 [ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="2_rw745"]
 [ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="3_01aic"]
 [ext_resource type="Texture2D" uid="uid://c5nha4qi0g0of" path="res://sprites/button_hover.png" id="4_2oo14"]
 [ext_resource type="Script" uid="uid://cp4ij5exrkxyp" path="res://stage/btn_start.gd" id="5_rw745"]
 [ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="5_swd1u"]
 [ext_resource type="Script" uid="uid://djqt5hlu81qct" path="res://stage/btn_quit.gd" id="7_01aic"]
+[ext_resource type="AudioStream" uid="uid://dqqfn8cgufjt6" path="res://sounds/secret_sound.mp3" id="9_swd1u"]
 
 [node name="main" type="Node"]
+script = ExtResource("1_f83le")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(387, 267)
@@ -69,15 +72,19 @@ texture_hover = ExtResource("4_2oo14")
 stretch_mode = 0
 script = ExtResource("7_01aic")
 
-[node name="quit" type="Label" parent="control"]
+[node name="quit" type="Label" parent="control/btn_quit"]
 z_index = 2
-offset_left = 207.0
-offset_top = 643.5
-offset_right = 573.0
-offset_bottom = 778.5
+offset_left = 12.0
+offset_top = 0.5
+offset_right = 378.0
+offset_bottom = 135.5
 theme_override_fonts/font = ExtResource("5_swd1u")
 theme_override_font_sizes/font_size = 150
 text = "QUIT"
 horizontal_alignment = 1
 vertical_alignment = 3
 uppercase = true
+
+[node name="secret_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_swd1u")
+volume_db = 24.0
