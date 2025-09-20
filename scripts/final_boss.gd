@@ -1,7 +1,7 @@
 extends "res://scripts/enemy.gd"
 class_name FinalBoss
 
-@export var current_max_health: int = 100
+@export var current_max_health: int = 200
 @export var bullet_scene: PackedScene
 @onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy4 ]
 
@@ -11,7 +11,6 @@ class_name FinalBoss
 @export var enemy_scenes := {
 	"normal": preload("res://scenes/enemy_1.tscn"),
 	"kamikaze": preload("res://scenes/enemy_2.tscn"),
-	"splitting": preload("res://scenes/enemy_3.tscn"),
 	"bouncing" : preload("res://scenes/bouncing.tscn")
 }
 
@@ -28,7 +27,7 @@ func _ready():
 	_update_hp_bar()
 
 	# Start spawning minions
-	enemy_spawn_timer.wait_time = 3.0  # spawn every 3s
+	enemy_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 	enemy_spawn_timer.start()
 
@@ -139,9 +138,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:
 		body.take_damage(1)
 
-# -------------------------------
-# NEW: Boss spawns random minions
-# -------------------------------
 func _on_enemy_spawn_timer_timeout() -> void:
 	if not enemy_container:
 		return

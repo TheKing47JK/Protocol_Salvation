@@ -193,6 +193,15 @@
 	  "delay": 5.0
 	}
   ]
-}
+},
+"stage3": {
+	  "waves": [
+		{
+		  "type": "boss",
+		  "enemies": ["finalboss"],
+		  "delay": 4.0
+		}
+	  ]
+	}
   }
 }
