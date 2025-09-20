@@ -34,13 +34,8 @@ func _ready() -> void:
 		lv_3_lock.visible = true
 
 func _on_button_pressed() -> void:
-	if stageManager.lvl1_completed == false:
-		stageManager.load_stage(0)
-	else:
 		stageManager.load_stage(0)
 		
-		
-
 
 func _on_button_2_pressed() -> void:
 	if stageManager.lvl1_completed == false:

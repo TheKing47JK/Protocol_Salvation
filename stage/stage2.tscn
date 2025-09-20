@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bioivdowlyn54"]
+[gd_scene load_steps=12 format=3 uid="uid://bioivdowlyn54"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_ycadj"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ov8wl"]
