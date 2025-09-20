@@ -3,7 +3,7 @@ class_name FinalBoss
 
 @export var current_max_health: int = 100
 @export var bullet_scene: PackedScene
-@onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy ]
+@onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy4 ]
 
 func _ready():
 	for child in get_children():
@@ -65,7 +65,7 @@ func _ensure_hp_bar() -> void:
 	hp_bar.name = "HPBar"
 	add_child(hp_bar)
 	# Configure its position above the bot and size
-	hp_bar.offset = Vector2(7, -150) #Lucky 7 old shit
+	hp_bar.offset = Vector2(7, -50) #Lucky 7 old shit
 	hp_bar.size = Vector2(258, 22)
 
 func _update_hp_bar() -> void:

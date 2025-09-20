@@ -10,7 +10,8 @@ extends Node2D
 	"kamikaze": preload("res://scenes/enemy_2.tscn"),
 	"splitting": preload("res://scenes/enemy_3.tscn"),
 	"bouncing" : preload("res://scenes/bouncing.tscn"),
-	"miniboss" : preload("res://scenes/mini_boss.tscn")
+	"miniboss" : preload("res://scenes/mini_boss.tscn"),
+	"finalboss" : preload("res://scenes/final_boss.tscn")
 }
 
 # Wave data
@@ -53,9 +54,11 @@ func start_next_wave():
 	if not stages.has(current_stage_name):
 		print("No stage data found for: ", current_stage_name)
 		return
-		
+
 	if current_stage >= stages.size():
 		print("All stages complete!")
+		await get_tree().create_timer(5.0).timeout
+		TransitionManager.transition_to("res://scenes/WinScene.tscn", 1.0)
 		return
 
 	var waves = stages[current_stage_name]["waves"]
@@ -63,13 +66,23 @@ func start_next_wave():
 	if current_wave < waves.size():
 		var wave = waves[current_wave]
 		print("Starting wave: ", current_wave, " (", wave["type"], ")")
-		spawn_timer.wait_time = wave.get("delay", 3.0)
-		spawn_timer.start()
+
+		# Boss waves are special – do not schedule auto next wave
+		if wave["type"] == "boss":
+			# Spawn immediately (no timer)
+			_on_spawn_wave()
+			print("Boss wave spawned! Waiting for defeat...")
+			return
+		else:
+			# Normal waves – delay and spawn
+			spawn_timer.wait_time = wave.get("delay", 3.0)
+			spawn_timer.start()
 	else:
 		print("Stage ", current_stage, " cleared!")
 		current_stage += 1
 		current_wave = 0
-		start_next_wave()
+		await get_tree().create_timer(5.0).timeout
+		TransitionManager.transition_to("res://scenes/Win.tscn", 1.0)
 
 
 func _on_spawn_wave():
@@ -84,12 +97,57 @@ func _on_spawn_wave():
 		"v-shape":
 			spawn_v(wave)
 		"boss":
-			spawn_enemy("boss", Vector2(640, -300)) # Center spawn for boss
+			spawn_boss(wave) # Center spawn
+			await get_tree().create_timer(3.0).timeout
+			monitor_boss_defeat()
 		_:
 			print("Unknown wave type: ", wave["type"])
 
 	current_wave += 1
-	start_next_wave()
+
+	# Don’t auto-advance if it was a boss wave
+	if wave["type"] != "boss":
+		start_next_wave()
+	
+func monitor_boss_defeat() -> void:
+	var enemy_container = get_node("EnemyContainer") # adjust path if needed
+
+	# Wait until at least one boss actually appears inside EnemyContainer
+	while true:
+		var found_boss := false
+		for boss in get_tree().get_nodes_in_group("boss"):
+			if boss.get_parent() == enemy_container:
+				found_boss = true
+				break
+		if found_boss:
+			break
+		await get_tree().create_timer(0.1).timeout # check often until boss spawns
+
+	# Now wait until no boss remains in EnemyContainer
+	while true:
+		var boss_alive := false
+		for boss in get_tree().get_nodes_in_group("boss"):
+			if boss.get_parent() == enemy_container:
+				boss_alive = true
+				break
+
+		if not boss_alive:
+			_on_boss_defeated()
+			return
+
+		await get_tree().create_timer(1.0).timeout
+	
+func _on_boss_defeated():
+	print("Boss defeated! Transitioning to Win screen...")
+	await get_tree().create_timer(3.0).timeout # optional delay for effects
+	TransitionManager.transition_to("res://scenes/Win.tscn", 1.0)
+	
+func spawn_boss(wave: Dictionary):
+	var enemies: Array = wave.get("enemies", []) # list of enemy types
+	var spawn_position = Vector2(640, -300)      # Center top of screen
+	
+	for enemy_type in enemies:
+		spawn_enemy(enemy_type, spawn_position)
 
 
 func spawn_row(wave: Dictionary):

@@ -2,56 +2,25 @@
   "stages": {
 	"stage1": {
 	  "waves": [
-  {
-		  "type": "v-shape",
-		  "enemies": ["normal"],
-		  "count": 5,
-		  "delay": 2.0
-		},
 		{
-		  "type": "row",
-		  "enemies": ["normal", "kamikaze", "normal", "kamikaze"],
-		  "delay": 10.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "start_x": 50,
-		  "count": 5,
-		  "delay": 5.0
+		  "type": "boss",
+		  "enemies": ["finalboss"],
+		  "delay": 4.0
 		},
 		{
 		  "type": "row",
 		  "enemies": ["normal"],
-		  "delay": 10.0
-		},
-		{
-		  "type": "v-shape",
-		  "enemies": ["normal"],
-		  "count": 5,
-		  "delay": 15.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal", "kamikaze", "normal", "kamikaze"],
-		  "start_x": 0,
-		  "delay": 20.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "count":5,
-		  "delay": 25.0
+		  "delay": 4.0
 		},
 		{
 		  "type": "row",
 		  "enemies": ["normal"],
-		  "delay": 30.0
+		  "delay": 4.0
 		},
 		{
 		  "type": "row",
 		  "enemies": ["normal"],
-		  "delay": 35.0
+		  "delay": 4.0
 		}
 	  ]
 	},
@@ -59,50 +28,8 @@
 	  "waves": [
 		{
 		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "count": 3,
-		  "start_x":0,
-		  "delay": 2.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "count": 5,
-		  "start_x": 300,
+		  "enemies": ["normal"],
 		  "delay": 4.0
-		},
-		{
-		  "type": "line",
-		  "enemies": ["normal"],
-		  "count":5,
-		  "delay": 7.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal"],
-		  "delay": 10.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal", "kamikaze", "normal", "kamikaze", "normal"],
-		  "start_x": 0,
-		  "delay": 20.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["kamikaze"],
-		  "count":7,
-		  "delay": 25.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["normal"],
-		  "delay": 30.0
-		},
-		{
-		  "type": "row",
-		  "enemies": ["miniboss"],
-		  "delay": 35.0
 		}
 	  ]
 	}

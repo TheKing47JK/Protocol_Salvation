@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pso4q"]
 radius = 180.0
 
-[node name="MiniBoss" type="Area2D" groups=["damageable"]]
+[node name="MiniBoss" type="Area2D" groups=["boss", "damageable"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_p6s6w")

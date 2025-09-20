@@ -21,6 +21,7 @@ Signals="*res://Autoloads/Signals.gd"
 MusicManager="*res://scenes/musicManager.tscn"
 stageManager="*res://scenes/stageManager.tscn"
 TransitionManager="*res://scripts/TransitionManager.gd"
+LevelCore="*res://levelCore.gd"
 
 [display]
 
@@ -36,6 +37,7 @@ window/stretch/aspect="expand"
 
 damageable=""
 powerup_ui=""
+boss=""
 
 [input]
 

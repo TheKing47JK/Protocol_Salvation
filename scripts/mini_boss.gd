@@ -8,7 +8,7 @@ class_name MiniBoss
 @export var start_y: float = 300.0
 @export var current_max_health: int = 50
 @export var bullet_scene: PackedScene
-@onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy ]
+@onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy4 ]
 
 var direction: int = 1  
 var current_speed : int = 150

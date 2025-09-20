@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://2nkcng54w1yv"]
 
-[ext_resource type="Texture2D" uid="uid://bsrc0xsta0wws" path="res://sprites/Mini Pixel Pack 3/Effects/GAME_OVER (72 x 8).png" id="1_jhsh6"]
+[ext_resource type="Texture2D" uid="uid://f1w6i1l80qhn" path="res://gameover.png" id="1_jhsh6"]
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="2_qr6ht"]
 [ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="3_peb8x"]
 [ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="4_na63y"]
@@ -12,8 +12,8 @@
 [node name="Lost" type="Node2D"]
 
 [node name="GameOver(72X8)" type="Sprite2D" parent="."]
-position = Vector2(382, 337)
-scale = Vector2(9.90278, 36.75)
+position = Vector2(383.517, 372.609)
+scale = Vector2(1.21672, 1.41464)
 texture = ExtResource("1_jhsh6")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_qr6ht")]
@@ -71,6 +71,7 @@ script = ExtResource("8_jhsh6")
 
 [node name="quit" type="Label" parent="control/btn_menu"]
 z_index = 2
+layout_mode = 0
 offset_left = 11.0
 offset_top = 2.5
 offset_right = 377.0
