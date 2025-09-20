@@ -10,7 +10,8 @@ extends Node2D
 	"kamikaze": preload("res://scenes/enemy_2.tscn"),
 	"splitting": preload("res://scenes/enemy_3.tscn"),
 	"bouncing" : preload("res://scenes/bouncing.tscn"),
-	"miniboss" : preload("res://scenes/mini_boss.tscn")
+	"miniboss" : preload("res://scenes/mini_boss.tscn"),
+	"finalboss" : preload("res://scenes/final_boss.tscn")
 }
 
 # Wave data

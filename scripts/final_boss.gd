@@ -1,21 +1,11 @@
 extends "res://scripts/enemy.gd"
-class_name MiniBoss
+class_name FinalBoss
 
-@export var horizontalSpeed := 100.0
-@export var verticalSpeed := 30.0 	
-@export var min_x: float = 300.0
-@export var max_x: float = 500.0
-@export var start_y: float = 300.0  # choose the vertical level
-@export var current_max_health: int = 50
+@export var current_max_health: int = 100
 @export var bullet_scene: PackedScene
 @onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy ]
 
-var direction: int = 1  
-var horizontalDirection : int = 1
-var current_speed : int = 150
-
 func _ready():
-	position = Vector2(min_x, start_y)
 	for child in get_children():
 		if child is Marker2D:
 			muzzles_enemy.append(child)
@@ -26,14 +16,8 @@ func _ready():
 	_update_hp_bar()
 
 func _physics_process(delta: float) -> void:
-	position.x += direction * current_speed * delta
-	
-	if position.x >= max_x:
-		position.x = max_x
-		direction = -1  # move left
-	elif position.x <= min_x:
-		position.x = min_x
-		direction = 1   # move right
+	position.x = 377
+	position.y = 214
 	 
 	shoot_timer -= delta
 	if shoot_timer <= 0:
@@ -69,15 +53,10 @@ func take_damage(amount: int) -> void:
 	_update_hp_bar()
 	if health <= 0:
 		die()
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is ShipPlayer:
-		body.take_damage(1)
 	
-
+		
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
-
 
 func _ensure_hp_bar() -> void:
 	# Create the health bar if it doesn't exist yet
@@ -86,8 +65,8 @@ func _ensure_hp_bar() -> void:
 	hp_bar.name = "HPBar"
 	add_child(hp_bar)
 	# Configure its position above the bot and size
-	hp_bar.offset = Vector2(0, -150)
-	hp_bar.size = Vector2(58, 12)
+	hp_bar.offset = Vector2(7, -150) #Lucky 7 old shit
+	hp_bar.size = Vector2(258, 22)
 
 func _update_hp_bar() -> void:
 	# Update the ratio (current / max health) and visibility
@@ -123,3 +102,7 @@ func choose_weighted(weights: Dictionary) -> String:
 			return name
 	return weights.keys()[0]
 	
+func _on_body_entered(body: Node2D) -> void:
+	if body is ShipPlayer:
+		body.take_damage(1)
+		

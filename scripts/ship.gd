@@ -6,6 +6,7 @@ signal died
 
 @export var armor: int = 4
 
+
 @onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitByEnemy
 
@@ -28,10 +29,12 @@ var rateOfFire:float = normalrateOfFire
 @onready var boosterTimer = $"Booster Timer"
 @onready var shieldSprite = $Shield
 
+
 var shoot_cd := false
 var laser_scene = preload("res://scenes/laser.tscn")
 
 func _ready():
+
 	Signals.emit_signal("on_player_armor_changed",armor)
 	shieldSprite.visible = false
 
@@ -79,21 +82,13 @@ func take_damage(amount: int) -> void:
 	armor -= amount
 	Signals.emit_signal("on_player_armor_changed", armor)
 	
-	# If a hit sound exists, play it
+# If a hit sound exists, play it
 	if hit_sound:
 		if hit_sound.playing:
 			hit_sound.stop()
 		hit_sound.play()
   
-	if armor > 0 and armor <= 2:
-		var cam = get_tree().get_first_node_in_group("main_camera")
-		if cam:
-			if cam.has_method("shake"):
-				cam.shake(5.0)
-			if cam.has_method("zoom_in"):
-				cam.zoom_in(1.2, 0.3)
-
-
+	
 	if armor <= 0:
 		die()
 
@@ -108,10 +103,11 @@ func die():
 	# Emit a custom signal to notify other scripts that this entity has died
 	died.emit()
 
+
 func applyShield(time:float):
 	invincibilityTimer.start(time + invincibilityTimer.time_left)
 	shieldSprite.visible = true
-	
+	 
 func applyRapidFire(time:float):
 	rateOfFire = rapidrateOfFire
 	rapidfireTimer.start(time + rapidfireTimer.time_left)
@@ -133,3 +129,4 @@ func _on_rapid_fire_timer_timeout() -> void:
 
 func _on_booster_timer_timeout() -> void:
 	speed = normalspeed
+	

@@ -2,7 +2,7 @@ extends Node
 
 # List of stage scene paths in order
 var stages = [
-	"res://scene/stage1.tscn",
+	"res://scene/world.tscn",
 	"res://stage/stage2.tscn",
 	"res://stage/stage3.tscn"
 ]
