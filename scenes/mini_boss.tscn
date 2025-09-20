@@ -6,21 +6,21 @@
 [ext_resource type="AudioStream" uid="uid://byn5xc1kux5pc" path="res://sounds/laser_enemy.wav" id="3_rl7on"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pso4q"]
-radius = 369.195
+radius = 180.0
 
-[node name="MiniBoss" type="Area2D" groups=["Boss", "damageable"]]
+[node name="MiniBoss" type="Area2D" groups=["damageable"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_p6s6w")
 metadata/_custom_type_script = "uid://duhm1hj1rk643"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 0)
-scale = Vector2(1.035, 1.035)
+position = Vector2(-3, 2)
+scale = Vector2(0.81, 0.786)
 texture = ExtResource("2_pso4q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -102)
+position = Vector2(0, -35)
 shape = SubResource("CircleShape2D_pso4q")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -32,16 +32,16 @@ stream = ExtResource("3_rl7on")
 stream = ExtResource("3_p6s6w")
 
 [node name="MuzzleEnemy" type="Marker2D" parent="."]
-position = Vector2(-189, 125)
+position = Vector2(-156, 90)
 
 [node name="MuzzleEnemy2" type="Marker2D" parent="."]
-position = Vector2(203, 126)
+position = Vector2(150, 89)
 
 [node name="MuzzleEnemy3" type="Marker2D" parent="."]
-position = Vector2(113, 120)
+position = Vector2(85, 93)
 
 [node name="MuzzleEnemy4" type="Marker2D" parent="."]
-position = Vector2(-109, 122)
+position = Vector2(-89, 90)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -2,7 +2,7 @@ extends ProgressBar
 
 @onready var plane := $Sprite2D
 
-var total_time := 150.0 # 2.5 mina
+var total_time := 150.0 # 2.5 min
 var current_time := 0.0
 
 func _ready():
