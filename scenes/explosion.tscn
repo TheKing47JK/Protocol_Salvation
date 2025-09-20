@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bstu86scuuy01"]
+[gd_scene load_steps=19 format=3 uid="uid://bstu86scuuy01"]
 
 [ext_resource type="Texture2D" uid="uid://dujvkvfxc4n0v" path="res://sprites/PixelSpaceRage/256px/Explosion01_Frame_01_png_processed.png" id="1_6smmu"]
 [ext_resource type="Texture2D" uid="uid://dmek7f1p8x084" path="res://sprites/PixelSpaceRage/256px/Explosion01_Frame_02_png_processed.png" id="2_l208b"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cm6j71n6sxhsw" path="res://sprites/PixelSpaceRage/256px/Explosion01_Frame_09_png_processed.png" id="9_xe657"]
 [ext_resource type="Script" uid="uid://yabrd7sbka8j" path="res://scripts/explosion.gd" id="10_6m2gf"]
 [ext_resource type="AudioStream" uid="uid://ckprsmrghv0s1" path="res://sounds/explosion.wav" id="11_fasmd"]
+[ext_resource type="Texture2D" uid="uid://dpygdo8ith78j" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-5.png" id="12_l208b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h461u"]
 animations = [{
@@ -47,6 +48,30 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_6smmu"]
+offsets = PackedFloat32Array(0, 0.508197, 1)
+colors = PackedColorArray(1, 0.85098, 0.231373, 1, 1, 0.533333, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l208b"]
+gradient = SubResource("Gradient_6smmu")
+
+[sub_resource type="Curve" id="Curve_dvsvq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dvsvq"]
+curve = SubResource("Curve_dvsvq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dcqkm"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.0
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_dvsvq")
+color_ramp = SubResource("GradientTexture1D_l208b")
+
 [node name="Explosion" type="AnimatedSprite2D"]
 scale = Vector2(2.03846, 2.04688)
 sprite_frames = SubResource("SpriteFrames_h461u")
@@ -57,3 +82,12 @@ script = ExtResource("10_6m2gf")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_fasmd")
+
+[node name="Sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("12_l208b")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dcqkm")

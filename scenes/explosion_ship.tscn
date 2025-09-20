@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dud5myyp1dyfx"]
+[gd_scene load_steps=15 format=3 uid="uid://dud5myyp1dyfx"]
 
 [ext_resource type="Texture2D" uid="uid://darh337cnn5q" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-8.png" id="1_s2uwv"]
 [ext_resource type="Texture2D" uid="uid://byo72l1xuwg5n" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-7.png" id="2_kkbt5"]
@@ -35,6 +35,30 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_kkbt5"]
+offsets = PackedFloat32Array(0, 0.508197, 1)
+colors = PackedColorArray(1, 0.85098, 0.231373, 1, 1, 0.533333, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l208b"]
+gradient = SubResource("Gradient_kkbt5")
+
+[sub_resource type="Curve" id="Curve_gilsx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4hpr0"]
+curve = SubResource("Curve_gilsx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_50lek"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.0
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_4hpr0")
+color_ramp = SubResource("GradientTexture1D_l208b")
+
 [node name="ExplosionShip" type="AnimatedSprite2D"]
 scale = Vector2(3.28125, 3.20833)
 sprite_frames = SubResource("SpriteFrames_f73tw")
@@ -45,3 +69,12 @@ script = ExtResource("7_kkbt5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ugalq")
+
+[node name="Sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("4_50lek")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_50lek")

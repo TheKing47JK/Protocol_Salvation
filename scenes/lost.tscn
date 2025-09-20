@@ -71,6 +71,7 @@ script = ExtResource("8_jhsh6")
 
 [node name="quit" type="Label" parent="control/btn_menu"]
 z_index = 2
+layout_mode = 0
 offset_left = 11.0
 offset_top = 2.5
 offset_right = 377.0
