@@ -19,7 +19,7 @@ const POWERUPS = {
 }
 
 # Drop chance (%)
-@export var drop_chance: float = 30.0  # 30% chance a power-up spawns
+@export var drop_chance: float = 10.0  # 30% chance a power-up spawns
 
 # Weighted probabilities (must sum to 100 or just relative weights)
 @export var weights := {

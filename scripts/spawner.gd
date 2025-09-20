@@ -81,7 +81,7 @@ func start_next_wave():
 		print("Stage ", current_stage, " cleared!")
 		current_stage += 1
 		current_wave = 0
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(7.0).timeout
 		stageManager.load_clear_scene()
 
 

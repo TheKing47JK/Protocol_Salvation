@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 func _ready():
 	play("explosion")
 	
-	if randf() < 0.01:
+	if randf() < 0.001:
 		$willhelm_screem.play()
 	else:
 		$explosion.play()

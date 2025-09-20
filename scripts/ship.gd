@@ -4,14 +4,14 @@ extends CharacterBody2D
 signal laser_shoot(laser_scene, location)
 signal died
 
-@export var armor: int = 4
+@export var armor: int = 5
 
 @onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
 @onready var hit_sound: AudioStreamPlayer2D = $HitByEnemy
 
-var max_armor:int = 4
+var max_armor:int = 5
 
-@export var damageInvincibilityTime = 1
+@export var damageInvincibilityTime = 2
 
 @export var normalspeed = 500
 @export var boostedspeed = 1000
