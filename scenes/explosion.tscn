@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bstu86scuuy01"]
+[gd_scene load_steps=14 format=3 uid="uid://bstu86scuuy01"]
 
 [ext_resource type="Texture2D" uid="uid://dujvkvfxc4n0v" path="res://sprites/PixelSpaceRage/256px/Explosion01_Frame_01_png_processed.png" id="1_6smmu"]
 [ext_resource type="Texture2D" uid="uid://dmek7f1p8x084" path="res://sprites/PixelSpaceRage/256px/Explosion01_Frame_02_png_processed.png" id="2_l208b"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cm6j71n6sxhsw" path="res://sprites/PixelSpaceRage/256px/Explosion01_Frame_09_png_processed.png" id="9_xe657"]
 [ext_resource type="Script" uid="uid://yabrd7sbka8j" path="res://scripts/explosion.gd" id="10_6m2gf"]
 [ext_resource type="AudioStream" uid="uid://ckprsmrghv0s1" path="res://sounds/explosion.wav" id="11_fasmd"]
+[ext_resource type="AudioStream" uid="uid://dr8cfj6bmy84v" path="res://sounds/wilhelm-scream.mp3" id="12_l208b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h461u"]
 animations = [{
@@ -55,5 +56,8 @@ frame = 8
 frame_progress = 1.0
 script = ExtResource("10_6m2gf")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_fasmd")
+
+[node name="willhelm_screem" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_l208b")

@@ -15,7 +15,7 @@ const POWERUPS = {
 	"extra_life": preload("res://PowerUp/extra_life_power_up.tscn"),
 	"shield": preload("res://PowerUp/shield_power_up.tscn"),
 	"rapid_fire": preload("res://PowerUp/rapid_fire_power_up.tscn"),
-	"speed_boost": preload("res://PowerUp/boost_power_up.tscn"),
+	"speed_boost": preload("res://PowerUp/boost_power_up.tscn")
 }
 
 # Drop chance (%)
@@ -26,7 +26,7 @@ const POWERUPS = {
 	"extra_life": 10,
 	"shield": 30,
 	"rapid_fire": 40,
-	"speed_boost": 20
+	"speed_boost": 20,
 }
 
 var laser_enemy_scene = preload("res://scenes/laser_enemy.tscn")

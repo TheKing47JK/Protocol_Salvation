@@ -1,0 +1,166 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0gd2d2fiofke"]
+
+[ext_resource type="Script" uid="uid://dm4ye2e5erulu" path="res://stage/level_select_menu.gd" id="1_isecu"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="1_wyt36"]
+[ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="2_cxc3u"]
+[ext_resource type="Texture2D" uid="uid://drqtm60h48qsq" path="res://sprites/button_normal.png" id="3_11mf1"]
+[ext_resource type="Texture2D" uid="uid://u7q4qa1ndsm1" path="res://sprites/lock.png" id="4_jq82j"]
+[ext_resource type="Texture2D" uid="uid://c66o43ot24ky3" path="res://sprites/button_pressed.png" id="4_ljy7v"]
+[ext_resource type="Texture2D" uid="uid://c5nha4qi0g0of" path="res://sprites/button_hover.png" id="5_23p3a"]
+[ext_resource type="Script" uid="uid://dlhrue3ugwxan" path="res://scripts/btn_menu.gd" id="6_h4ef8"]
+
+[node name="LevelSelectMenu" type="Node2D"]
+script = ExtResource("1_isecu")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.0
+offset_right = 212.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+theme_override_fonts/font = ExtResource("1_wyt36")
+text = "Level Select"
+
+[node name="control" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="control"]
+unique_name_in_owner = true
+offset_left = 154.0
+offset_top = 193.0
+offset_right = 623.0
+offset_bottom = 319.0
+
+[node name="Button2" type="Button" parent="control"]
+unique_name_in_owner = true
+offset_left = 154.0
+offset_top = 395.0
+offset_right = 626.0
+offset_bottom = 527.0
+
+[node name="Button3" type="Button" parent="control"]
+unique_name_in_owner = true
+offset_left = 160.0
+offset_top = 618.0
+offset_right = 630.0
+offset_bottom = 741.0
+
+[node name="btn_menu" type="TextureButton" parent="control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = 279.0
+offset_right = 190.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_11mf1")
+texture_pressed = ExtResource("4_ljy7v")
+texture_hover = ExtResource("5_23p3a")
+stretch_mode = 0
+script = ExtResource("6_h4ef8")
+
+[node name="quit" type="Label" parent="control/btn_menu"]
+z_index = 2
+layout_mode = 0
+offset_right = 366.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("1_wyt36")
+theme_override_font_sizes/font_size = 150
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="level1" type="Label" parent="."]
+offset_left = 311.0
+offset_top = 141.0
+offset_right = 352.0
+offset_bottom = 154.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("1_wyt36")
+text = "LEVEL 1"
+
+[node name="level2" type="Label" parent="."]
+offset_left = 311.0
+offset_top = 345.0
+offset_right = 352.0
+offset_bottom = 358.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("1_wyt36")
+text = "LEVEL 2"
+
+[node name="level3" type="Label" parent="."]
+offset_left = 311.0
+offset_top = 561.0
+offset_right = 352.0
+offset_bottom = 574.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("1_wyt36")
+text = "LEVEL 3"
+
+[node name="Lv1_complete" type="ColorRect" parent="."]
+offset_left = 167.0
+offset_top = 203.0
+offset_right = 614.0
+offset_bottom = 311.0
+color = Color(0.1705, 0.93, 0, 1)
+
+[node name="lv2_complete" type="ColorRect" parent="."]
+offset_left = 169.0
+offset_top = 408.0
+offset_right = 615.0
+offset_bottom = 515.0
+color = Color(0.168627, 0.929412, 0, 1)
+
+[node name="lv3_complete" type="ColorRect" parent="."]
+offset_left = 172.0
+offset_top = 626.0
+offset_right = 618.0
+offset_bottom = 733.0
+color = Color(0.168627, 0.929412, 0, 1)
+
+[node name="Lv1_lock" type="ColorRect" parent="."]
+offset_left = 166.0
+offset_top = 202.0
+offset_right = 613.0
+offset_bottom = 310.0
+color = Color(1, 0, 0, 1)
+
+[node name="lv2_lock" type="ColorRect" parent="."]
+offset_left = 168.0
+offset_top = 407.0
+offset_right = 614.0
+offset_bottom = 514.0
+color = Color(1, 0, 0, 1)
+
+[node name="lv3_lock" type="ColorRect" parent="."]
+offset_left = 171.0
+offset_top = 625.0
+offset_right = 617.0
+offset_bottom = 732.0
+color = Color(1, 0, 0, 1)
+
+[node name="Lock1" type="Sprite2D" parent="."]
+position = Vector2(390, 458)
+scale = Vector2(0.210094, 0.210094)
+texture = ExtResource("4_jq82j")
+
+[node name="Lock2" type="Sprite2D" parent="."]
+position = Vector2(389, 679)
+scale = Vector2(0.210094, 0.210094)
+texture = ExtResource("4_jq82j")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_cxc3u")]
+
+[connection signal="pressed" from="control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="control/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="control/Button3" to="." method="_on_button_3_pressed"]
