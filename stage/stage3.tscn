@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drocexojg8nt4"]
+[gd_scene load_steps=11 format=3 uid="uid://drocexojg8nt4"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_hjwfi"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ut35m"]
@@ -10,9 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="7_occcp"]
 [ext_resource type="PackedScene" uid="uid://d31qplcv8ulqr" path="res://HUD/progress_bar.tscn" id="7_tk0pw"]
 [ext_resource type="PackedScene" uid="uid://b6jnp5wf6ioye" path="res://HUD/pause_menu.tscn" id="8_nt3rr"]
-[ext_resource type="Script" uid="uid://cd1al2bwvw3p7" path="res://stage/shaking.gd" id="11_nt3rr"]
 
-[node name="stage3" type="Node2D" groups=["main_camera"]]
+[node name="stage3" type="Node2D"]
 script = ExtResource("1_hjwfi")
 enemy_scenes = Array[PackedScene]([ExtResource("2_ut35m"), ExtResource("3_vqm2r"), ExtResource("4_0ndcg")])
 
@@ -60,9 +59,5 @@ offset_top = 12.0
 offset_right = 755.0
 offset_bottom = 42.0
 text = "Stage 3"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(383, 512)
-script = ExtResource("11_nt3rr")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

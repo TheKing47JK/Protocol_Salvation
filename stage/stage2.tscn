@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bioivdowlyn54"]
+[gd_scene load_steps=13 format=3 uid="uid://bioivdowlyn54"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_ycadj"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_ov8wl"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://b70jw3rc4elqq" path="res://HUD/progress_bar.gd" id="8_dsf2j"]
 [ext_resource type="PackedScene" uid="uid://b6jnp5wf6ioye" path="res://HUD/pause_menu.tscn" id="8_x1pr4"]
 [ext_resource type="PackedScene" uid="uid://defdtk4kosw0j" path="res://scenes/spawner.tscn" id="12_dsf2j"]
-[ext_resource type="Script" uid="uid://cd1al2bwvw3p7" path="res://stage/shaking.gd" id="13_1ed4d"]
 
 [node name="stage2" type="Node2D"]
 script = ExtResource("1_ycadj")
@@ -65,9 +64,5 @@ offset_bottom = 33.0
 text = "Stage 2"
 
 [node name="Spawner" parent="." instance=ExtResource("12_dsf2j")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(384, 512)
-script = ExtResource("13_1ed4d")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

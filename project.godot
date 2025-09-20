@@ -36,6 +36,7 @@ window/stretch/aspect="expand"
 
 damageable=""
 powerup_ui=""
+Boss=""
 
 [input]
 

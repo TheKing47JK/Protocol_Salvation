@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clp7yaft1xlcf"]
+[gd_scene load_steps=12 format=3 uid="uid://clp7yaft1xlcf"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_3ikxw"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_e7fe8"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://balbsvsrb5duq" path="res://effects/background.tscn" id="8_lwrpw"]
 [ext_resource type="PackedScene" uid="uid://d31qplcv8ulqr" path="res://HUD/progress_bar.tscn" id="8_vf5ng"]
 [ext_resource type="PackedScene" uid="uid://b6jnp5wf6ioye" path="res://HUD/pause_menu.tscn" id="9_vf5ng"]
-[ext_resource type="Script" uid="uid://cd1al2bwvw3p7" path="res://stage/shaking.gd" id="12_an8mi"]
 
 [node name="stage1" type="Node2D"]
 script = ExtResource("1_3ikxw")
@@ -63,7 +62,3 @@ text = "Stage 1"
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(388, 514)
-script = ExtResource("12_an8mi")
