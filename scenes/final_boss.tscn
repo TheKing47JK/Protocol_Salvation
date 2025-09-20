@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcvl14hhnpsi5"]
+
+[ext_resource type="Script" uid="uid://cyebw0x0cef8q" path="res://scripts/final_boss.gd" id="1_723ie"]
+[ext_resource type="Texture2D" uid="uid://cgijuut48vcmf" path="res://sprites/finalBoss.png" id="2_723ie"]
+[ext_resource type="AudioStream" uid="uid://byn5xc1kux5pc" path="res://sounds/laser_enemy.wav" id="2_gu5vo"]
+[ext_resource type="AudioStream" uid="uid://d12r6gep5ie84" path="res://sounds/hit_enemy.wav" id="3_ud6ed"]
+
+[node name="FinalBoss" type="Area2D" groups=["damageable"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_723ie")
+metadata/_custom_type_script = "uid://duhm1hj1rk643"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(7, 161, -5, 161, -23, 153, -29, 142, -45, 119, -47, 91, -62, 59, -65, 37, -75, 28, -71, -15, -75, -37, -99, -31, -97, 35, -120, 68, -122, 119, -112, 136, -116, 208, -126, 214, -146, 213, -151, 187, -166, 179, -169, 163, -179, 209, -172, 236, -173, 297, -189, 306, -191, 326, -202, 336, -197, 374, -203, 400, -213, 404, -262, 404, -273, 392, -273, 351, -269, 347, -269, 327, -282, 326, -286, 292, -317, 258, -320, 228, -333, 146, -377, 80, -374, -14, -382, -134, -376, -194, -179, -345, -2, -414, 210, -321, 311, -261, 366, -224, 397, -180, 394, -97, 389, -3, 388, 81, 365, 110, 343, 119, 347, 141, 337, 162, 337, 176, 342, 202, 327, 220, 332, 233, 333, 252, 310, 280, 303, 326, 285, 332, 284, 353, 288, 389, 284, 395, 223, 399, 221, 359, 226, 342, 226, 327, 215, 326, 205, 295, 194, 290, 193, 266, 195, 246, 187, 229, 201, 202, 201, 72, 180, 73, 186, 125, 186, 147, 178, 159, 177, 189, 163, 187, 163, 212, 137, 209, 134, 188, 134, 128, 137, 124, 142, 81, 142, 53, 140, -27, 131, -27, 128, 53, 114, 27, 112, -39, 94, -36, 85, 31, 83, 60, 59, 91, 61, 118, 44, 140, 30, 158)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.00002, -1.99998)
+scale = Vector2(0.820234, 0.816328)
+texture = ExtResource("2_723ie")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ShootSoundEnemy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_gu5vo")
+
+[node name="HitByPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ud6ed")
+
+[node name="MuzzleEnemy" type="Marker2D" parent="."]
+position = Vector2(-236, 417)
+
+[node name="MuzzleEnemy2" type="Marker2D" parent="."]
+position = Vector2(256, 406)
+
+[node name="MuzzleEnemy3" type="Marker2D" parent="."]
+position = Vector2(150, 215)
+
+[node name="MuzzleEnemy4" type="Marker2D" parent="."]
+position = Vector2(-135, 214)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
