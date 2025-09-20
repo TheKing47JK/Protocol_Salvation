@@ -3,6 +3,12 @@ extends AnimatedSprite2D
 func _ready():
 	play("explode")
 	$AudioStreamPlayer2D.play()
+
+	# Play spark particles
+	if has_node("Sparks"):
+		$Sparks.restart()
+		$Sparks.emitting = true
+
 	connect("animation_finished", Callable(self, "_on_explosion_finished"))
 
 	# When the player explodes, the screen shakes violently

@@ -3,6 +3,9 @@ extends Area2D
 @export var speed = 1000
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	$GPUParticles2D.emitting = true
+
 func _process(delta: float) -> void:
 	global_position.y += speed * delta
 	pass
