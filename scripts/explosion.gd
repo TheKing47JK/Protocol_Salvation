@@ -2,6 +2,10 @@ extends AnimatedSprite2D
 
 func _ready():
 	play("explosion")
+
+	# Play spark particles
+	$Sparks.restart()
+	$Sparks.emitting = true
 	
 	if randf() < 0.001:
 		$willhelm_screem.play()
@@ -9,6 +13,7 @@ func _ready():
 		$explosion.play()
 
 	connect("animation_finished", Callable(self, "_on_animation_finished"))
+
 
 	var cam = get_tree().get_first_node_in_group("main_camera")
 	if cam:

@@ -1,11 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dunmyj61ujxrp"]
+[gd_scene load_steps=10 format=3 uid="uid://dunmyj61ujxrp"]
 
 [ext_resource type="Script" uid="uid://db8hekjf1iy5j" path="res://scripts/laser.gd" id="1_6ance"]
 [ext_resource type="Texture2D" uid="uid://04sclxyn3ad4" path="res://sprites/Pixel SHMUP Free/projectile_1.png" id="1_8sewo"]
+[ext_resource type="Texture2D" uid="uid://b6wdfsqmnnpfc" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-1.png" id="3_jjj73"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t64xh"]
 radius = 15.0
 height = 112.0
+
+[sub_resource type="Gradient" id="Gradient_412cd"]
+offsets = PackedFloat32Array(0, 0.990909, 1)
+colors = PackedColorArray(1, 1, 0.666667, 1, 1, 1, 1, 0, 1, 1, 0.666667, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jjj73"]
+gradient = SubResource("Gradient_412cd")
+
+[sub_resource type="Curve" id="Curve_788yo"]
+_data = [Vector2(0.0147059, 0.449438), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_412cd"]
+curve = SubResource("Curve_788yo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xjiwp"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_412cd")
+color_ramp = SubResource("GradientTexture1D_jjj73")
 
 [node name="Laser" type="Area2D"]
 collision_layer = 4
@@ -24,6 +46,13 @@ shape = SubResource("CapsuleShape2D_t64xh")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 12)
 scale = Vector2(1, 0.4)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 32)
+amount = 30
+texture = ExtResource("3_jjj73")
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_xjiwp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

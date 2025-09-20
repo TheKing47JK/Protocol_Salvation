@@ -2,10 +2,17 @@ extends AnimatedSprite2D
 
 func _ready():
 	play("explode")
+
+	# Play spark particles
+	if has_node("Sparks"):
+		$Sparks.restart()
+		$Sparks.emitting = true
+
 	if randf() < 0.001:
 		$willhelm_screem.play()
 	else:
 		$explosion.play()
+
 	connect("animation_finished", Callable(self, "_on_explosion_finished"))
 
 	# When the player explodes, the screen shakes violently
