@@ -12,7 +12,7 @@
 [node name="Lost" type="Node2D"]
 
 [node name="GameOver(72X8)" type="Sprite2D" parent="."]
-position = Vector2(383.517, 372.609)
+position = Vector2(381, 298)
 scale = Vector2(1.21672, 1.41464)
 texture = ExtResource("1_jhsh6")
 

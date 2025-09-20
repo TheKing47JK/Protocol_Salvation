@@ -58,7 +58,7 @@ func start_next_wave():
 	if current_stage >= stages.size():
 		print("All stages complete!")
 		await get_tree().create_timer(5.0).timeout
-		TransitionManager.transition_to("res://scenes/WinScene.tscn", 1.0)
+		stageManager.next_stage()
 		return
 
 	var waves = stages[current_stage_name]["waves"]
@@ -82,7 +82,7 @@ func start_next_wave():
 		current_stage += 1
 		current_wave = 0
 		await get_tree().create_timer(5.0).timeout
-		TransitionManager.transition_to("res://scenes/Win.tscn", 1.0)
+		stageManager.load_clear_scene()
 
 
 func _on_spawn_wave():
