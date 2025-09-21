@@ -63,7 +63,8 @@ offset_bottom = 345.0
 theme_override_styles/slider = SubResource("StyleBoxLine_wvd4o")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_v2f1a")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pm6b1")
-value = 2.0
+max_value = 1.0
+step = 0.01
 
 [node name="master" type="Label" parent="setting_panel/control/Master"]
 layout_mode = 0
@@ -140,7 +141,8 @@ offset_bottom = 481.0
 theme_override_styles/slider = SubResource("StyleBoxLine_wvd4o")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_v2f1a")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pm6b1")
-value = 1.0
+max_value = 1.0
+step = 0.01
 
 [node name="music" type="Label" parent="setting_panel/control/Music"]
 layout_mode = 0
