@@ -8,8 +8,8 @@ func _ready() -> void:
 	music_bus_id = AudioServer.get_bus_index("Music")
 
 	# Default both sliders to 50%
-	$setting_panel/control/Master.value = 0.5
-	$setting_panel/control/Music.value = 0.5
+	$setting_panel/control/Master.value = 1
+	$setting_panel/control/Music.value = 1
 
 	# Apply the default volumes to the buses
 	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db($setting_panel/control/Master.value / 1.0))
