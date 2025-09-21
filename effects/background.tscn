@@ -14,16 +14,20 @@ script = ExtResource("1_7d2ct")
 motion_mirroring = Vector2(0, 1024)
 
 [node name="Space" type="TextureRect" parent="SpaceLayer"]
-offset_right = 768.0
-offset_bottom = 1024.0
+offset_left = -212.0
+offset_top = -189.0
+offset_right = 983.0
+offset_bottom = 1142.0
 texture = ExtResource("1_1gpgy")
 
 [node name="Nebula001Layer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(0, 1024)
 
 [node name="TextureRect" type="TextureRect" parent="Nebula001Layer"]
-offset_right = 768.0
-offset_bottom = 1024.0
+offset_left = -217.0
+offset_top = -191.0
+offset_right = 983.0
+offset_bottom = 1027.0
 texture = ExtResource("2_7d2ct")
 stretch_mode = 5
 
@@ -31,8 +35,10 @@ stretch_mode = 5
 motion_mirroring = Vector2(0, 1024)
 
 [node name="TextureRect" type="TextureRect" parent="Nebula002Layer"]
-offset_right = 768.0
-offset_bottom = 1024.0
+offset_left = -207.0
+offset_top = -186.0
+offset_right = 985.0
+offset_bottom = 1026.0
 texture = ExtResource("3_is73g")
 stretch_mode = 4
 
@@ -40,8 +46,10 @@ stretch_mode = 4
 motion_mirroring = Vector2(0, 1024)
 
 [node name="TextureRect" type="TextureRect" parent="SmallStarsLayer"]
-offset_right = 768.0
-offset_bottom = 1024.0
+offset_left = -215.0
+offset_top = -196.0
+offset_right = 985.0
+offset_bottom = 1022.0
 texture = ExtResource("4_6unfh")
 stretch_mode = 1
 
@@ -49,6 +57,8 @@ stretch_mode = 1
 motion_mirroring = Vector2(0, 1024)
 
 [node name="TextureRect" type="TextureRect" parent="StarsLayer"]
-offset_right = 768.0
-offset_bottom = 1024.0
+offset_left = -210.0
+offset_top = -189.0
+offset_right = 987.0
+offset_bottom = 1021.0
 texture = ExtResource("5_dp8vk")

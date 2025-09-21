@@ -104,11 +104,15 @@ func _on_enemy_destroyed(position: Vector2):
 	if randf() * 100 > drop_chance:
 		return  
 
+	call_deferred("_spawn_powerup", position)
+
+func _spawn_powerup(position: Vector2):
 	var powerup_name = choose_weighted(weights)
 	var scene = POWERUPS[powerup_name]
 	var powerup = scene.instantiate()
 	get_parent().add_child(powerup)
 	powerup.global_position = position
+
 
 
 func choose_weighted(weights: Dictionary) -> String:

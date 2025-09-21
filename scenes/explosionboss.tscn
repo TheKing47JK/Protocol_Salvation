@@ -1,0 +1,85 @@
+[gd_scene load_steps=16 format=3 uid="uid://x6k4qi2ahljy"]
+
+[ext_resource type="Texture2D" uid="uid://darh337cnn5q" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-8.png" id="1_j0akv"]
+[ext_resource type="Texture2D" uid="uid://byo72l1xuwg5n" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-7.png" id="2_5uoro"]
+[ext_resource type="Texture2D" uid="uid://ycd5a1ru7pi1" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-6.png" id="3_grsye"]
+[ext_resource type="Texture2D" uid="uid://dpygdo8ith78j" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-5.png" id="4_gcfcv"]
+[ext_resource type="Texture2D" uid="uid://2gdi5kl3abbq" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-4.png" id="5_3uqdp"]
+[ext_resource type="Texture2D" uid="uid://5ek0xg1xdqm7" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-3.png" id="6_k03y0"]
+[ext_resource type="Script" uid="uid://cm5oxksjlv3nm" path="res://scripts/explosionboss.gd" id="7_5uoro"]
+[ext_resource type="AudioStream" uid="uid://ckprsmrghv0s1" path="res://sounds/explosion.wav" id="7_bwtbe"]
+[ext_resource type="AudioStream" uid="uid://dr8cfj6bmy84v" path="res://sounds/wilhelm-scream.mp3" id="8_la6p2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jk7w8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j0akv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5uoro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_grsye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gcfcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3uqdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k03y0")
+}],
+"loop": false,
+"name": &"explosionboss",
+"speed": 15.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_kw5x2"]
+offsets = PackedFloat32Array(0, 0.508197, 1)
+colors = PackedColorArray(1, 0.85098, 0.231373, 1, 1, 0.533333, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l208b"]
+gradient = SubResource("Gradient_kw5x2")
+
+[sub_resource type="Curve" id="Curve_1a4xn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4hpr0"]
+curve = SubResource("Curve_1a4xn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xrmxj"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.0
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_4hpr0")
+color_ramp = SubResource("GradientTexture1D_l208b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(16.7396, 13.75)
+sprite_frames = SubResource("SpriteFrames_jk7w8")
+animation = &"explosionboss"
+autoplay = "explosionboss"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("7_5uoro")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bwtbe")
+
+[node name="Sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("6_k03y0")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xrmxj")
+
+[node name="willhelm_screem" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_la6p2")

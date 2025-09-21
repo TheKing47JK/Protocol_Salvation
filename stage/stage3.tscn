@@ -17,6 +17,8 @@
 script = ExtResource("1_hjwfi")
 enemy_scenes = Array[PackedScene]([ExtResource("2_ut35m"), ExtResource("3_vqm2r"), ExtResource("4_0ndcg")])
 
+[node name="SpaceBackground2" parent="." instance=ExtResource("7_occcp")]
+
 [node name="EnemyContainer" type="Node2D" parent="."]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]

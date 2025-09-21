@@ -111,24 +111,28 @@ func _on_spawn_wave():
 		start_next_wave()
 	
 func monitor_boss_defeat() -> void:
-	await ready  # ensure we're in the tree
+	await get_tree().process_frame  # ensure node is in the scene tree
+
 	var enemy_container = get_node("EnemyContainer") # adjust path if needed
+	var tree = get_tree()
+	if tree == null:
+		return
 
 	# Wait until at least one boss actually appears inside EnemyContainer
 	while true:
 		var found_boss := false
-		for boss in get_tree().get_nodes_in_group("boss"):
+		for boss in tree.get_nodes_in_group("boss"):
 			if boss.get_parent() == enemy_container:
 				found_boss = true
 				break
 		if found_boss:
 			break
-		await get_tree().create_timer(0.1).timeout
+		await tree.create_timer(0.1).timeout
 
 	# Now wait until no boss remains in EnemyContainer
 	while true:
 		var boss_alive := false
-		for boss in get_tree().get_nodes_in_group("boss"):
+		for boss in tree.get_nodes_in_group("boss"):
 			if boss.get_parent() == enemy_container:
 				boss_alive = true
 				break
@@ -137,7 +141,7 @@ func monitor_boss_defeat() -> void:
 			_on_boss_defeated()
 			return
 
-		await get_tree().create_timer(1.0).timeout
+		await tree.create_timer(1.0).timeout
 	
 func _on_boss_defeated():
 	print("Boss defeated! Transitioning to Win screen...")

@@ -1,0 +1,101 @@
+[gd_scene load_steps=20 format=3 uid="uid://drxofwh18syn1"]
+
+[ext_resource type="Texture2D" uid="uid://drg4bura231d" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_01_png_processed.png" id="1_vaww8"]
+[ext_resource type="Texture2D" uid="uid://b883nwwjsyx6w" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_02_png_processed.png" id="2_nbmge"]
+[ext_resource type="Texture2D" uid="uid://wp1vf57xwyq3" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_03_png_processed.png" id="3_ktyv2"]
+[ext_resource type="Texture2D" uid="uid://dybpctm2au7ra" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_04_png_processed.png" id="4_bior5"]
+[ext_resource type="Texture2D" uid="uid://byd4hh608k12o" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_05_png_processed.png" id="5_bnoae"]
+[ext_resource type="Texture2D" uid="uid://dlo4gqrhgq0lu" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_06_png_processed.png" id="6_rb2l0"]
+[ext_resource type="Texture2D" uid="uid://rgfynns1w7vm" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_07_png_processed.png" id="7_iycf5"]
+[ext_resource type="Texture2D" uid="uid://do4viiwexc0gs" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_08_png_processed.png" id="8_ixml8"]
+[ext_resource type="Texture2D" uid="uid://c7huf1rh8vuvn" path="res://sprites/PixelSpaceRage/256px/Explosion02_Frame_09_png_processed.png" id="9_1unng"]
+[ext_resource type="Script" uid="uid://dkeosow34r5y3" path="res://scripts/explosion_miniboss.gd" id="10_nl7vg"]
+[ext_resource type="AudioStream" uid="uid://ckprsmrghv0s1" path="res://sounds/explosion.wav" id="11_lk56w"]
+[ext_resource type="Texture2D" uid="uid://b6wdfsqmnnpfc" path="res://sprites/Pixel SHMUP Free/Explosion/explosion-1.png" id="12_vaww8"]
+[ext_resource type="AudioStream" uid="uid://dr8cfj6bmy84v" path="res://sounds/wilhelm-scream.mp3" id="13_r8ny4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hopt0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vaww8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nbmge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ktyv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bior5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bnoae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rb2l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iycf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ixml8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1unng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ixml8")
+}],
+"loop": false,
+"name": &"explosionminiboss",
+"speed": 20.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_s0lun"]
+offsets = PackedFloat32Array(0, 0.508197, 1)
+colors = PackedColorArray(1, 0.85098, 0.231373, 1, 1, 0.533333, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vaww8"]
+gradient = SubResource("Gradient_s0lun")
+
+[sub_resource type="Curve" id="Curve_wcarf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nbmge"]
+curve = SubResource("Curve_wcarf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyx5d"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.0
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_nbmge")
+color_ramp = SubResource("GradientTexture1D_vaww8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(8.22115, 8.01172)
+sprite_frames = SubResource("SpriteFrames_hopt0")
+animation = &"explosionminiboss"
+autoplay = "explosionminiboss"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("10_nl7vg")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_lk56w")
+
+[node name="Sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("12_vaww8")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nyx5d")
+
+[node name="willhelm_screem" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_r8ny4")
