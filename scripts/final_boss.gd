@@ -57,7 +57,7 @@ func die():
 		enemy_spawn_timer.stop()
 
 	# Spawn an explosion effect
-	var explosion_scene = preload("res://scenes/explosion.tscn")
+	var explosion_scene = preload("res://scenes/explosionboss.tscn")
 	var explosion = explosion_scene.instantiate()
 	explosion.position = position
 	get_parent().add_child(explosion)

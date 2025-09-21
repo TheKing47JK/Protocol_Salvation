@@ -52,7 +52,7 @@ func shoot_enemy():
 func die():
 
 	# Spawn an explosion effect at this position
-	var explosion_scene = preload("res://scenes/explosion.tscn")
+	var explosion_scene = preload("res://scenes/explosion_miniboss.tscn")
 	var explosion = explosion_scene.instantiate()
 	explosion.position = position
 	get_parent().add_child(explosion)
@@ -101,13 +101,15 @@ func _on_enemy_destroyed(position: Vector2):
 	# Check if a power-up should spawn
 	if randf() * 100 > drop_chance:
 		return  
+		
+	call_deferred("_spawn_powerup", position)
 
+func _spawn_powerup(position: Vector2):
 	var powerup_name = choose_weighted(weights)
 	var scene = POWERUPS[powerup_name]
 	var powerup = scene.instantiate()
 	get_parent().add_child(powerup)
 	powerup.global_position = position
-
 
 func choose_weighted(weights: Dictionary) -> String:
 	var total_weight = 0

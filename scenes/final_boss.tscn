@@ -1,7 +1,6 @@
-
 [gd_scene load_steps=6 format=3 uid="uid://bcvl14hhnpsi5"]
 
-[ext_resource type="Script" uid="uid://cyebw0x0cef8q" path="res://scripts/final_boss.gd" id="1_723ie"]
+[ext_resource type="Script" path="res://scripts/final_boss.gd" id="1_723ie"]
 [ext_resource type="Texture2D" uid="uid://cgijuut48vcmf" path="res://sprites/finalBoss.png" id="2_723ie"]
 [ext_resource type="AudioStream" uid="uid://byn5xc1kux5pc" path="res://sounds/laser_enemy.wav" id="2_gu5vo"]
 [ext_resource type="AudioStream" uid="uid://d12r6gep5ie84" path="res://sounds/hit_enemy.wav" id="3_ud6ed"]
@@ -9,7 +8,6 @@
 
 [node name="FinalBoss" type="Area2D" groups=["boss", "damageable"]]
 position = Vector2(386, 125)
-
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_723ie")
