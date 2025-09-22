@@ -67,8 +67,23 @@ func take_damage(amount: int) -> void:
 		hit_by_player.play()
 	# Update the health bar to reflect the new health value
 	_update_hp_bar()
+	
+	# a short shake, the intensity increases as the health decreases
+	var hp_ratio = float(health) / float(current_max_health)
+	var shake_amount = lerp(0.5, 6.0, 1.0 - hp_ratio)  # toned down range
+	var cam = _find_shake_camera()
+	if cam:
+		cam.shake(shake_amount)
+	
 	if health <= 0:
 		die()
+		
+func _find_shake_camera() -> Node:
+	var nodes := get_tree().get_nodes_in_group("main_camera")
+	for n in nodes:
+		if n and n.has_method("shake"):
+			return n
+	return null
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is ShipPlayer:

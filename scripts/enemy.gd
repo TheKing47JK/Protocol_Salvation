@@ -1,5 +1,5 @@
 extends Area2D
-class_name MiniBot
+class_name normalbot
 
 @export var speed: float = 200
 @export var shoot_interval: float = 3

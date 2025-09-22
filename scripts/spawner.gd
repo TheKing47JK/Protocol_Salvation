@@ -144,8 +144,8 @@ func monitor_boss_defeat() -> void:
 		await tree.create_timer(1.0).timeout
 	
 func _on_boss_defeated():
-	print("Boss defeated! Transitioning to Win screen...")
 	await get_tree().create_timer(3.0).timeout # optional delay for effects
+	print("Boss defeated! Transitioning to Win screen...")
 	TransitionManager.transition_to("res://scenes/StageClear.tscn", 1.0)
 	
 func spawn_boss(wave: Dictionary):

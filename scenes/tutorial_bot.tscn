@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://baleti4i3xht1"]
+
+[ext_resource type="Script" uid="uid://b8135hthh8wh2" path="res://scripts/tutorial_bot.gd" id="1_ekmhd"]
+[ext_resource type="Texture2D" uid="uid://cpnb3ikinl5cc" path="res://bg.png" id="2_5xtkv"]
+[ext_resource type="FontFile" uid="uid://dy7j2ne7keqhn" path="res://fonts/m5x7.ttf" id="3_f575e"]
+
+[node name="tutorial bot" type="Area2D" groups=["damageable"]]
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ekmhd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -198)
+scale = Vector2(1.05, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 51)
+scale = Vector2(0.328148, 0.562174)
+texture = ExtResource("2_5xtkv")
+
+[node name="WASD to move" type="Label" parent="."]
+offset_left = -196.0
+offset_top = -62.0
+offset_right = -20.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_f575e")
+theme_override_font_sizes/font_size = 45
+text = "WASD
+↑ ↓ ←→ "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WASD to move2" type="Label" parent="."]
+offset_left = 28.0
+offset_top = -54.0
+offset_right = 204.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_f575e")
+theme_override_font_sizes/font_size = 45
+text = "to MOVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WASD to move3" type="Label" parent="."]
+offset_left = -194.0
+offset_top = 57.0
+offset_right = -18.0
+offset_bottom = 157.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_f575e")
+theme_override_font_sizes/font_size = 45
+text = "SPACE"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WASD to move4" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 61.0
+offset_right = 208.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_f575e")
+theme_override_font_sizes/font_size = 45
+text = "to SHOOT"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WASD to move5" type="Label" parent="."]
+offset_left = -70.0
+offset_top = 197.0
+offset_right = 106.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_f575e")
+theme_override_font_sizes/font_size = 38
+text = "Have FUN !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WASD to move6" type="Label" parent="."]
+offset_left = -86.0
+offset_top = -191.0
+offset_right = 100.0
+offset_bottom = -91.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_f575e")
+theme_override_font_sizes/font_size = 45
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
