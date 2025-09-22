@@ -113,27 +113,38 @@ func _on_spawn_wave():
 func monitor_boss_defeat() -> void:
 	await get_tree().process_frame  # ensure node is in the scene tree
 
-	var enemy_container = get_node("EnemyContainer") # adjust path if needed
+	if not has_node("EnemyContainer"):
+		return
+	var enemy_container = get_node("EnemyContainer")
 	var tree = get_tree()
 	if tree == null:
 		return
 
 	# Wait until at least one boss actually appears inside EnemyContainer
 	while true:
+		# If scene or container is gone, stop
+		if enemy_container == null or not is_instance_valid(enemy_container) or tree == null:
+			return
+
 		var found_boss := false
 		for boss in tree.get_nodes_in_group("boss"):
-			if boss.get_parent() == enemy_container:
+			if is_instance_valid(boss) and boss.get_parent() == enemy_container:
 				found_boss = true
 				break
 		if found_boss:
 			break
+
 		await tree.create_timer(0.1).timeout
 
 	# Now wait until no boss remains in EnemyContainer
 	while true:
+		# Exit if container or tree no longer exists (e.g., player died, scene changed)
+		if enemy_container == null or not is_instance_valid(enemy_container) or tree == null:
+			return
+
 		var boss_alive := false
 		for boss in tree.get_nodes_in_group("boss"):
-			if boss.get_parent() == enemy_container:
+			if is_instance_valid(boss) and boss.get_parent() == enemy_container:
 				boss_alive = true
 				break
 
@@ -142,6 +153,7 @@ func monitor_boss_defeat() -> void:
 			return
 
 		await tree.create_timer(1.0).timeout
+
 	
 func _on_boss_defeated():
 	await get_tree().create_timer(3.0).timeout # optional delay for effects

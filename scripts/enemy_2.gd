@@ -36,9 +36,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.take_damage(1)
 		die()
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
-
 func _ensure_hp_bar() -> void:
 	# Create the health bar if it doesn't exist yet
 	if hp_bar and hp_bar.is_inside_tree(): return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clp7yaft1xlcf"]
+[gd_scene load_steps=14 format=3 uid="uid://clp7yaft1xlcf"]
 
 [ext_resource type="Script" uid="uid://bfke7lmm65w8q" path="res://scripts/world.gd" id="1_3ikxw"]
 [ext_resource type="PackedScene" uid="uid://csadf3vp02rp0" path="res://scenes/enemy_1.tscn" id="2_e7fe8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d31qplcv8ulqr" path="res://HUD/progress_bar.tscn" id="8_vf5ng"]
 [ext_resource type="PackedScene" uid="uid://b6jnp5wf6ioye" path="res://HUD/pause_menu.tscn" id="9_vf5ng"]
 [ext_resource type="PackedScene" uid="uid://baleti4i3xht1" path="res://scenes/tutorial_bot.tscn" id="12_an8mi"]
+[ext_resource type="Script" uid="uid://cd1al2bwvw3p7" path="res://stage/shaking.gd" id="13_hrewq"]
 
 [node name="stage1" type="Node2D"]
 script = ExtResource("1_3ikxw")
@@ -66,3 +67,7 @@ autostart = true
 
 [node name="tutorial bot" parent="." instance=ExtResource("12_an8mi")]
 position = Vector2(378, -269)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(383, 512)
+script = ExtResource("13_hrewq")
