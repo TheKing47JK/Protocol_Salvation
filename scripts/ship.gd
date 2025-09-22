@@ -102,6 +102,7 @@ func die():
 	queue_free()
 	# Emit a custom signal to notify other scripts that this entity has died
 	died.emit()
+	Signals.player_died.emit()
 	TransitionManager.transition_to("res://scenes/lost.tscn", 1.0)
 
 

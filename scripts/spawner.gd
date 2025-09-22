@@ -13,7 +13,8 @@ extends Node2D
 	"miniboss" : preload("res://scenes/mini_boss.tscn"),
 	"finalboss" : preload("res://scenes/final_boss.tscn")
 }
-
+#player data
+var player_dead := false
 # Wave data
 var stages: Dictionary = {}
 var current_stage := 0
@@ -27,6 +28,7 @@ func laser_enemy_shot(laser_enemy_scene, location):
 	laser_container.add_child(laser)
 
 func _ready():
+	Signals.player_died.connect(_on_player_died)
 	monitor_boss_defeat()
 	# Get the current node name
 	current_stage_name = get_tree().current_scene.name
@@ -122,6 +124,8 @@ func monitor_boss_defeat() -> void:
 
 	# Wait until at least one boss actually appears inside EnemyContainer
 	while true:
+		if player_dead:
+			return
 		# If scene or container is gone, stop
 		if enemy_container == null or not is_instance_valid(enemy_container) or tree == null:
 			return
@@ -138,6 +142,8 @@ func monitor_boss_defeat() -> void:
 
 	# Now wait until no boss remains in EnemyContainer
 	while true:
+		if player_dead:
+			return
 		# Exit if container or tree no longer exists (e.g., player died, scene changed)
 		if enemy_container == null or not is_instance_valid(enemy_container) or tree == null:
 			return
@@ -156,7 +162,8 @@ func monitor_boss_defeat() -> void:
 
 	
 func _on_boss_defeated():
-	await get_tree().create_timer(3.0).timeout # optional delay for effects
+	if player_dead:
+		return
 	print("Boss defeated! Transitioning to Win screen...")
 	TransitionManager.transition_to("res://scenes/StageClear.tscn", 1.0)
 	
@@ -255,3 +262,6 @@ func spawn_enemy(enemy_type: String, pos: Vector2 = Vector2.ZERO):
 		enemy.laser_enemy_shoot.connect(laser_enemy_shot)
 	enemy_container.add_child(enemy)
 	print("Spawned ", enemy_type, " at ", pos)
+	
+func _on_player_died() -> void:
+	player_dead = true
