@@ -1,22 +1,26 @@
 extends "res://scripts/enemy.gd"
 class_name FinalBoss
 
-@export var current_max_health: int = 200
+@export var current_max_health: int = 250
 @export var bullet_scene: PackedScene
 @onready var muzzles_enemy : Array[Node] = [ $MuzzleEnemy, $MuzzleEnemy2, $MuzzleEnemy3, $MuzzleEnemy4 ]
 
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var enemy_container: Node2D = $EnemyContainer
+@export var min_x: float = 300.0
+@export var max_x: float = 500.0
 
 @export var enemy_scenes := {
-	"normal": preload("res://scenes/enemy_1.tscn"),
-	"kamikaze": preload("res://scenes/enemy_2.tscn"),
-	"bouncing" : preload("res://scenes/bouncing.tscn")
-}
+	"kamikaze": preload("res://scenes/enemy_2.tscn")
+} #we face problem with spawning normal and bouncing bot , they will suddenly despawn for no reason
 
 var game_start_time: float = 0.0
+var direction: int = 1  
+var horizontalDirection : int = 1
+var current_speed : int = 50
 
 func _ready():
+		
 	for child in get_children():
 		if child is Marker2D:
 			muzzles_enemy.append(child)
@@ -27,13 +31,20 @@ func _ready():
 	_update_hp_bar()
 
 	# Start spawning minions
-	enemy_spawn_timer.wait_time = 1.0
+	enemy_spawn_timer.wait_time = 0.5
 	enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 	enemy_spawn_timer.start()
 
 func _physics_process(delta: float) -> void:
-	position.x = 377
 	position.y = 214
+	position.x += direction * current_speed * delta
+	
+	if position.x >= max_x:
+		position.x = max_x
+		direction = -1  # move left
+	elif position.x <= min_x:
+		position.x = min_x
+		direction = 1   # move right
 	 
 	shoot_timer -= delta
 	if shoot_timer <= 0:
@@ -83,7 +94,7 @@ func take_damage(amount: int) -> void:
 
 	# a short shake, the intensity increases as the health decreases
 	var hp_ratio = float(health) / float(current_max_health)
-	var shake_amount = lerp(1.0, 12.0, 1.0 - hp_ratio)
+	var shake_amount = lerp(0.5, 6.0, 1.0 - hp_ratio)  # toned down range
 	var cam = _find_shake_camera()
 	if cam:
 		cam.shake(shake_amount)

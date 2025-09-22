@@ -64,9 +64,23 @@
 		},
 		{
 		  "type": "row",
+		  "enemies": ["normal"],
+		  "count": 4,
+		  "start_x": 0,
+		  "delay": 5.0
+		},
+		{
+		  "type": "row",
+		  "enemies": ["normal"],
+		  "count": 4,
+		  "start_x": 400,
+		  "delay": 5.0
+		},
+		{
+		  "type": "row",
 		  "enemies": ["splitting"],
 		  "count": 2,
-		  "start_x": 0,
+		  "start_x": 300,
 		  "delay": 5.0
 		},
 		{
@@ -80,14 +94,12 @@
 		  "type": "v-shape",
 		  "enemies": ["bouncing"],
 		  "count": 5,
-		  "delay": 5.0
+		  "delay": 0.0
 		},
 		{
-		  "type": "row",
-		  "enemies": ["splitting", "bouncing"],
-		  "count": 2,
-		  "start_x": 400,
-		  "delay": 5.0
+		  "type": "",
+		  "enemies": [],
+		  "count": 0,
 		}
 	  ]
 	},
