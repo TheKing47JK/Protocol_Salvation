@@ -113,7 +113,7 @@ func _on_spawn_wave():
 		start_next_wave()
 	
 func monitor_boss_defeat() -> void:
-	await get_tree().process_frame  # ensure node is in the scene tree
+	await get_tree().create_timer(0).timeout  # ensure node is in the scene tree
 
 	if not has_node("EnemyContainer"):
 		return
@@ -204,20 +204,25 @@ func spawn_line(wave: Dictionary):
 	var enemies: Array = wave.get("enemies", [])
 	var count : int = wave.get("count", 1)
 	var viewport_rect = get_viewport_rect()
-	var start_y = wave.get("start_y", -300)  # starting height
 	var screen_min_y = viewport_rect.position.y + 50
 	var screen_max_y = viewport_rect.end.y - 200
 	var spacing = 96
 	var start_x = wave.get("x", viewport_rect.size.x / 2) # middle by default
 
 	var enemy_index = 0
+	
+	
+	# total "height" of the stack
+	var total_height :int = (count - 1) * spacing
+
+	# calculate max depth so the last enemy is still above screen
+	var max_depth := total_height
+	var start_y := -max_depth - 100   # push whole line above top of screen
 
 	for enemy_type in enemies:
 		for i in range(count):
-			var offset_y = start_y + screen_min_y + enemy_index * spacing
-			#offset_y = clamp(offset_y, screen_min_y, screen_max_y)
-
-			var spawn_position = Vector2(start_x, offset_y)
+			var offset_y :int= start_y + enemy_index * spacing
+			var spawn_position := Vector2(start_x, offset_y)
 			spawn_enemy(enemy_type, spawn_position)
 			enemy_index += 1
 			

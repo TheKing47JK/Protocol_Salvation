@@ -7,14 +7,16 @@ func _ready() -> void:
 	master_bus_id = AudioServer.get_bus_index("Master")
 	music_bus_id = AudioServer.get_bus_index("Music")
 
-	# Default both sliders to 50%
-	$setting_panel/control/Master.value = 1
-	$setting_panel/control/Music.value = 1
+	# Get the current bus volumes (in dB) and convert them back to linear for the slider
+	var master_db = AudioServer.get_bus_volume_db(master_bus_id)
+	var music_db = AudioServer.get_bus_volume_db(music_bus_id)
 
-	# Apply the default volumes to the buses
-	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db($setting_panel/control/Master.value / 1.0))
-	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db($setting_panel/control/Music.value / 1.0))
+	$setting_panel/control/Master.value = db_to_linear(master_db)
+	$setting_panel/control/Music.value = db_to_linear(music_db)
 
+	# (Optional) Apply these values to the buses in case sliders were saved differently
+	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db($setting_panel/control/Master.value))
+	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db($setting_panel/control/Music.value))
 
 
 func _on_mute_toggled(toggled_on: bool) -> void:
