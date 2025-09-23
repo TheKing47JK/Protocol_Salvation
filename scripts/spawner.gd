@@ -113,7 +113,7 @@ func _on_spawn_wave():
 		start_next_wave()
 	
 func monitor_boss_defeat() -> void:
-	await get_tree().create_timer(0).timeout  # ensure node is in the scene tree
+	await self.ready    # ensure node is in the scene tree
 
 	if not has_node("EnemyContainer"):
 		return
