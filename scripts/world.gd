@@ -35,10 +35,6 @@ func _process(_delta: float) -> void:
 	if time_passed > 30 and enemy_spawn_timer.wait_time > 1.5:
 		enemy_spawn_timer.wait_time = 2.0
 
-	# just for a testing the scene transition effect
-	# press 'enter'
-	if Input.is_action_just_pressed("stageChange"):
-		stageManager.next_stage()
 
 func laser_shot(laser_scene,location):
 	var laser = laser_scene.instantiate()
