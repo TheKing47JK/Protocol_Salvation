@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://byn5xc1kux5pc" path="res://sounds/laser_enemy.wav" id="3_rl7on"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pso4q"]
-radius = 369.195
+radius = 228.002
 
 [node name="MiniBoss" type="Area2D" groups=["boss", "damageable"]]
 collision_layer = 2
