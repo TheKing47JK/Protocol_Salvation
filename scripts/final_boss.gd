@@ -12,7 +12,7 @@ class_name FinalBoss
 
 @export var enemy_scenes := {
 	"kamikaze": preload("res://scenes/enemy_2.tscn")
-} #we face problem with spawning normal and bouncing bot , they will suddenly despawn for no reason
+} 
 
 var game_start_time: float = 0.0
 var direction: int = 1  

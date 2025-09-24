@@ -35,7 +35,6 @@ func _on_btn_menu_pressed() -> void:
 	TransitionManager.transition_to("res://stage/stage_main.tscn")
 
 
-# --- helpers ---
 func show_menu():
 	self.visible = true
 	self.mouse_filter = Control.MOUSE_FILTER_STOP  # capture input
